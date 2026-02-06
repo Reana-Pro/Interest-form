@@ -57,11 +57,11 @@ export default function App() {
             className="flex flex-1 justify-center items-center no-underline shrink-0"
           >
             <img
-              src="/login-page-logo.svg"
-              alt="Reana"
-              width={220}
-              height={72}
-              className="object-contain w-auto h-14 sm:h-16"
+              src="/login-page-logo.png"
+              alt="Reana — Data driven decisions at speed"
+              width={280}
+              height={92}
+              className="object-contain w-auto h-20 sm:h-24"
             />
           </a>
           <ul className="flex-1 flex justify-end items-center gap-8 list-none m-0 p-0 min-w-0">
