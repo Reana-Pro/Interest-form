@@ -6,6 +6,7 @@ import {
   TrendingUp,
   User,
   ArrowRight,
+  ChevronDown,
 } from "lucide-react";
 
 const EARLY_ACCESS_COLORS = {
@@ -384,96 +385,164 @@ export default function App() {
               }}
             >
               Reana turns a 1-4 unit analysis into a decision-ready snapshot and side-by-side
-              comparisons—so you can focus on the next lead, not the next spreadsheet.
+              comparisons— and it does the math for you. Less FUD (fear, uncertainty, doubt). More calm, confident action.
             </p>
 
-            <a
-              href="#signup"
-              className="mt-10 inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
-              style={{
-                background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
-                fontFamily: "var(--font-montserrat), sans-serif",
-              }}
-            >
-              Get early access
-              <ArrowRight className="w-5 h-5" />
-            </a>
+            <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
+              <a
+                href="#signup"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
+                style={{
+                  background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
+                  fontFamily: "var(--font-montserrat), sans-serif",
+                }}
+              >
+                Join the Investor Interest List
+                <ArrowRight className="w-5 h-5" />
+              </a>
+              <a
+                href="#what-you-get"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium no-underline transition-opacity hover:opacity-90 border"
+                style={{
+                  color: EARLY_ACCESS_COLORS.text,
+                  borderColor: EARLY_ACCESS_COLORS.borderMuted,
+                  fontFamily: "var(--font-lato), sans-serif",
+                }}
+              >
+                See what you&apos;ll get
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* Deal-math callout */}
-          <div className="mt-14 text-center">
+          <div className="mt-14 text-center space-y-3">
             <p
               className="text-sm sm:text-base"
               style={{ color: EARLY_ACCESS_COLORS.textSecondary }}
             >
-              The biggest deal-killer isn’t math—it’s fear of getting it wrong.
+              Feel like a pro—even when the deal is moving fast.
+            </p>
+            <p
+              className="text-xl sm:text-2xl font-semibold"
+              style={{
+                color: EARLY_ACCESS_COLORS.text,
+                fontFamily: "var(--font-montserrat), sans-serif",
+              }}
+            >
+              The biggest deal-killer isn&apos;t math—it&apos;s fear of getting it wrong.
             </p>
           </div>
 
+          {/* Three problem statements */}
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              {
-                title: "Decide faster",
-                desc: "A clear snapshot of returns, risk, and assumptions—without the spreadsheet sprawl.",
-                tone: "#4F7CFF",
-                icon: Zap,
-              },
-              {
-                title: "Trust the inputs",
-                desc: "Consistent assumptions with explainable outputs you can share with partners.",
-                tone: "#B24BF3",
-                icon: Shield,
-              },
-              {
-                title: "Act with confidence",
-                desc: "See tradeoffs side-by-side so you can make the call and move on to the next deal.",
-                tone: "#4F7CFF",
-                icon: CheckCircle2,
-              },
-            ].map((card) => {
-              const Icon = card.icon;
-              return (
-                <div
-                  key={card.title}
-                  className="rounded-2xl border p-8 flex flex-col items-center text-center"
+              "A lot of people freeze at the word 'math' or feel intimidated by spreadsheets.",
+              "Even confident investors lose hours chasing inputs across websites and tabs.",
+              "After all that work, there's still the question: 'Did I miss something?'",
+            ].map((text, i) => (
+              <div
+                key={text.slice(0, 24)}
+                className="rounded-xl border p-6 text-left"
+                style={{
+                  background: EARLY_ACCESS_COLORS.bgCard,
+                  borderColor: EARLY_ACCESS_COLORS.borderMuted,
+                }}
+              >
+                <p
+                  className="m-0 text-sm sm:text-base leading-relaxed"
                   style={{
-                    background: EARLY_ACCESS_COLORS.bgCard,
-                    borderColor: card.tone,
-                    boxShadow: `0 0 0 1px ${card.tone}55, 0 0 26px ${card.tone}22`,
+                    color: EARLY_ACCESS_COLORS.text,
+                    fontFamily: "var(--font-lato), sans-serif",
                   }}
                 >
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mb-5 border"
-                    style={{
-                      borderColor: card.tone,
-                      color: card.tone,
-                      boxShadow: `0 0 16px ${card.tone}55`,
-                    }}
-                  >
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <h3
-                    className="text-lg font-bold mb-2"
-                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-                  >
-                    {card.title}
-                  </h3>
-                  <p
-                    className="m-0 text-sm leading-relaxed"
-                    style={{
-                      color: EARLY_ACCESS_COLORS.textSecondary,
-                      fontFamily: "var(--font-lato), sans-serif",
-                    }}
-                  >
-                    {card.desc}
-                  </p>
-                </div>
-              );
-            })}
+                  {text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Solution statement */}
+          <p
+            className="mt-8 text-center text-base sm:text-lg max-w-3xl mx-auto"
+            style={{
+              color: "#7C9EED",
+              fontFamily: "var(--font-lato), sans-serif",
+            }}
+          >
+            Reana replaces that stress with relief: the spreadsheet is built, the math is done, and the story is clear.
+          </p>
+
+          {/* What Reana helps you do */}
+          <h3
+            className="mt-16 text-2xl sm:text-3xl font-bold text-center"
+            style={{
+              fontFamily: "var(--font-montserrat), sans-serif",
+              color: EARLY_ACCESS_COLORS.text,
+            }}
+          >
+            What Reana helps you do
+          </h3>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                title: "Compare opportunities quickly",
+                desc: "Put 2-3 properties side-by-side so you choose the best move, not just the next move.",
+              },
+              {
+                title: "See the deal story at a glance",
+                desc: "A clean summary that highlights what matters: income potential, major cost drivers, and risk signals.",
+              },
+              {
+                title: "Make decisions with confidence",
+                desc: "Reana gives you an editable analysis without spreadsheet stress—so you can make offers and negotiate without second-guessing.",
+              },
+              {
+                title: "Keep your assumptions consistent",
+                desc: "Save your preferred defaults so each new deal starts closer to how you actually invest.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-xl border p-6"
+                style={{
+                  background: EARLY_ACCESS_COLORS.bgCard,
+                  borderColor: EARLY_ACCESS_COLORS.borderMuted,
+                }}
+              >
+                <h4
+                  className="font-bold mb-2 m-0"
+                  style={{
+                    fontFamily: "var(--font-montserrat), sans-serif",
+                    color: EARLY_ACCESS_COLORS.text,
+                  }}
+                >
+                  {item.title}
+                </h4>
+                <p
+                  className="m-0 text-sm leading-relaxed"
+                  style={{
+                    color: EARLY_ACCESS_COLORS.textSecondary,
+                    fontFamily: "var(--font-lato), sans-serif",
+                  }}
+                >
+                  {item.desc}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* How it works */}
-          <div className="mt-20">
+          <div className="mt-28">
+            <p
+              className="text-center text-sm sm:text-base mb-8"
+              style={{
+                color: EARLY_ACCESS_COLORS.textSecondary,
+                fontFamily: "var(--font-lato), sans-serif",
+              }}
+            >
+              From &quot;I think...&quot; to &quot;I know.&quot;
+            </p>
             <h3
               className="text-2xl sm:text-3xl font-bold text-center"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
@@ -485,34 +554,34 @@ export default function App() {
                 {
                   n: "1",
                   title: "Drop in an address",
-                  desc: "Start with the property you’re underwriting.",
+                  desc: "Start with the property you're considering—Reana organizes the analysis flow for you.",
                 },
                 {
                   n: "2",
                   title: "Review the snapshot",
-                  desc: "See returns, risk, and assumptions in one place.",
+                  desc: "See the numbers and the story in one place—clear, structured, and comparable.",
                 },
                 {
                   n: "3",
                   title: "Compare and decide",
-                  desc: "Line up multiple deals side-by-side and make the call.",
+                  desc: "Line up 2-3 options and choose what's worth pursuing with less FUD and more confidence.",
                 },
               ].map((step) => (
                 <div
                   key={step.n}
-                  className="rounded-2xl border p-7"
+                  className="rounded-2xl border p-7 text-center"
                   style={{
                     background: EARLY_ACCESS_COLORS.bgCard,
                     borderColor: EARLY_ACCESS_COLORS.borderMuted,
                   }}
                 >
                   <div
-                    className="w-9 h-9 rounded-full flex items-center justify-center mb-4 font-bold"
+                    className="w-9 h-9 rounded-full flex items-center justify-center mb-4 font-bold mx-auto"
                     style={{
-                      background: "rgba(109, 109, 237, 0.14)",
-                      border: `1px solid ${EARLY_ACCESS_COLORS.borderMuted}`,
+                      background: "rgba(178, 75, 243, 0.15)",
+                      border: "1px solid rgba(178, 75, 243, 0.5)",
                       fontFamily: "var(--font-montserrat), sans-serif",
-                      color: EARLY_ACCESS_COLORS.text,
+                      color: "#B24BF3",
                     }}
                   >
                     {step.n}
@@ -535,6 +604,59 @@ export default function App() {
                 </div>
               ))}
             </div>
+            <p
+              className="mt-8 text-center text-sm"
+              style={{
+                color: EARLY_ACCESS_COLORS.textSecondary,
+                fontFamily: "var(--font-lato), sans-serif",
+              }}
+            >
+              Built for 1-4 unit investing. Designed for speed, clarity, and confidence.
+            </p>
+          </div>
+
+          {/* Built for real-world investors */}
+          <div className="mt-20">
+            <h3
+              className="text-2xl sm:text-3xl font-bold text-center"
+              style={{
+                fontFamily: "var(--font-montserrat), sans-serif",
+                color: EARLY_ACCESS_COLORS.text,
+              }}
+            >
+              Built for real-world investors
+            </h3>
+            <p
+              className="mt-4 text-center text-base max-w-2xl mx-auto"
+              style={{
+                color: EARLY_ACCESS_COLORS.textSecondary,
+                fontFamily: "var(--font-lato), sans-serif",
+              }}
+            >
+              If you analyze 1 property a year or 4 a month, the workflow is the same—Reana just makes it faster and calmer.
+            </p>
+            <div className="mt-8 flex flex-nowrap justify-center gap-3">
+              {[
+                "Buy & Hold / long-term rental",
+                "BRRRR investors",
+                "Fix-and-flip investors",
+                "Small portfolio owners",
+                "Newer investors who want structure and confidence",
+              ].map((label) => (
+                <span
+                  key={label}
+                  className="flex-1 min-w-0 flex items-center justify-center px-4 py-3 rounded-xl border text-sm font-medium text-center leading-snug"
+                  style={{
+                    background: EARLY_ACCESS_COLORS.bgCard,
+                    borderColor: "rgba(255,255,255,0.3)",
+                    color: EARLY_ACCESS_COLORS.text,
+                    fontFamily: "var(--font-lato), sans-serif",
+                  }}
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* FAQ */}
@@ -549,38 +671,52 @@ export default function App() {
             <div className="mt-10 max-w-3xl mx-auto space-y-3">
               {[
                 {
-                  q: "Is Reana replacing my spreadsheet?",
-                  a: "Reana is designed to replace the messy parts of underwriting and comparison while keeping assumptions clear and consistent.",
+                  q: "Is Reana for beginners or experienced investors?",
+                  a: "Reana is built for both. If you're new to underwriting, it gives you structure and clarity. If you're experienced, it speeds up comparison and keeps your assumptions consistent.",
                 },
                 {
-                  q: "What property types do you support?",
+                  q: "What property types does it support?",
                   a: "We focus on 1–4 unit residential deals to start, with more property types coming later.",
+                },
+                {
+                  q: "Will it tell me exactly what to offer?",
+                  a: "Reana gives you the numbers and the story—returns, risk, and tradeoffs—so you can decide with confidence. Your offer strategy stays yours.",
                 },
                 {
                   q: "Can I compare multiple deals?",
                   a: "Yes—compare properties side-by-side to see risk, returns, and tradeoffs quickly.",
                 },
                 {
+                  q: "Is Reana replacing my spreadsheet?",
+                  a: "Reana is designed to replace the messy parts of underwriting and comparison while keeping assumptions clear and consistent.",
+                },
+                {
                   q: "When will early access open?",
-                  a: "We’re onboarding in small waves. Join the list and we’ll email you when your spot is ready.",
+                  a: "We're onboarding in small waves. Join the list and we'll email you when your spot is ready.",
                 },
               ].map((item) => (
                 <details
                   key={item.q}
-                  className="rounded-xl border px-5 py-4"
+                  className="rounded-xl border px-5 py-4 group"
                   style={{
                     background: EARLY_ACCESS_COLORS.bgCard,
-                    borderColor: EARLY_ACCESS_COLORS.borderMuted,
+                    borderColor: "rgba(109, 109, 237, 0.4)",
                   }}
                 >
-                  <summary
-                    className="cursor-pointer select-none font-semibold"
-                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-                  >
-                    {item.q}
+                  <summary className="cursor-pointer select-none flex items-center justify-between gap-3 list-none">
+                    <span
+                      className="font-semibold text-left flex-1"
+                      style={{
+                        fontFamily: "var(--font-montserrat), sans-serif",
+                        color: EARLY_ACCESS_COLORS.text,
+                      }}
+                    >
+                      {item.q}
+                    </span>
+                    <ChevronDown className="w-5 h-5 shrink-0 text-white/80 group-open:rotate-180 transition-transform" />
                   </summary>
                   <p
-                    className="mt-3 mb-0 text-sm leading-relaxed"
+                    className="mt-3 mb-0 text-sm leading-relaxed text-left"
                     style={{
                       color: EARLY_ACCESS_COLORS.textSecondary,
                       fontFamily: "var(--font-lato), sans-serif",
@@ -598,8 +734,9 @@ export default function App() {
             className="mt-20 rounded-2xl border px-8 py-10 text-center"
             style={{
               background:
-                "linear-gradient(135deg, rgba(178,75,243,0.20), rgba(79,124,255,0.14))",
+                "linear-gradient(135deg, rgba(178,75,243,0.22), rgba(79,124,255,0.16))",
               borderColor: "rgba(255,255,255,0.12)",
+              boxShadow: "0 0 40px rgba(178, 75, 243, 0.15)",
             }}
           >
             <h3
@@ -615,8 +752,7 @@ export default function App() {
                 fontFamily: "var(--font-lato), sans-serif",
               }}
             >
-              Join the waitlist and we’ll notify you when onboarding opens. The first
-              batch is limited—help us build the fastest way to compare deals.
+              Join the list and we&apos;ll notify you when onboarding opens. The math is handled—so you can feel confident making the call.
             </p>
             <a
               href="#signup"
@@ -626,9 +762,18 @@ export default function App() {
                 fontFamily: "var(--font-montserrat), sans-serif",
               }}
             >
-              Join the early access list
+              Join the Investor Interest List
               <ArrowRight className="w-5 h-5" />
             </a>
+            <p
+              className="mt-4 text-xs sm:text-sm"
+              style={{
+                color: EARLY_ACCESS_COLORS.textSecondary,
+                fontFamily: "var(--font-lato), sans-serif",
+              }}
+            >
+              No spam. Just launch updates and early access invites.
+            </p>
           </div>
         </div>
       </section>
