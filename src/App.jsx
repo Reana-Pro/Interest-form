@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Zap,
   Shield,
@@ -9,6 +9,29 @@ import {
   ArrowRight,
   ChevronDown,
 } from "lucide-react";
+
+function useScrollReveal(opts = {}) {
+  const { threshold = 0.12, rootMargin = "0px 0px -80px 0px", initialVisible = false } = opts;
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(initialVisible);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold, rootMargin }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold, rootMargin]);
+
+  return [ref, isVisible];
+}
 
 const EARLY_ACCESS_COLORS = {
   bg: "#0a0a14",
@@ -27,6 +50,13 @@ const EARLY_ACCESS_COLORS = {
 
 export default function App() {
   const [role, setRole] = useState("investor");
+
+  const [heroRef, heroVisible] = useScrollReveal({ initialVisible: true });
+  const [whyRef, whyVisible] = useScrollReveal();
+  const [investorsRef, investorsVisible] = useScrollReveal();
+  const [agentsRef, agentsVisible] = useScrollReveal();
+  const [faqRef, faqVisible] = useScrollReveal();
+  const [footerRef, footerVisible] = useScrollReveal();
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -106,7 +136,10 @@ export default function App() {
       </header>
 
       {/* Hero */}
-      <section className="relative z-10 pt-20 pb-24 px-6">
+      <section
+        ref={heroRef}
+        className={`relative z-10 pt-20 pb-24 px-6 scroll-reveal ${heroVisible ? "is-visible" : ""}`}
+      >
         <div className="max-w-3xl mx-auto text-center">
           {/* AI-Powered tag */}
           <div
@@ -220,7 +253,10 @@ export default function App() {
       </section>
 
       {/* Why Reana */}
-      <section className="relative z-10 py-20 px-6">
+      <section
+        ref={whyRef}
+        className={`relative z-10 py-20 px-6 scroll-reveal ${whyVisible ? "is-visible" : ""}`}
+      >
         <div className="max-w-5xl mx-auto">
           <h2
             className="text-3xl sm:text-4xl font-bold text-center mb-14"
@@ -354,8 +390,9 @@ export default function App() {
 
       {/* Investors (same page; jump target) */}
       <section
+        ref={investorsRef}
         id="investors"
-        className="relative z-10 px-6 py-24 scroll-mt-24"
+        className={`relative z-10 px-6 py-24 scroll-mt-24 scroll-reveal ${investorsVisible ? "is-visible" : ""}`}
       >
         <div className="max-w-5xl mx-auto">
           <div className="text-center">
@@ -788,7 +825,11 @@ export default function App() {
       </section>
 
       {/* Agents (same page; jump target) */}
-      <section id="agents" className="relative z-10 px-6 py-24 scroll-mt-24">
+      <section
+        ref={agentsRef}
+        id="agents"
+        className={`relative z-10 px-6 py-24 scroll-mt-24 scroll-reveal ${agentsVisible ? "is-visible" : ""}`}
+      >
         <div className="max-w-5xl mx-auto">
           {/* FOR AGENTS hero */}
           <div className="text-center">
@@ -1112,7 +1153,10 @@ export default function App() {
       </section>
 
       {/* Agent FAQ + Early Agent Access */}
-      <section className="relative z-10 px-6 py-20">
+      <section
+        ref={faqRef}
+        className={`relative z-10 px-6 py-20 scroll-reveal ${faqVisible ? "is-visible" : ""}`}
+      >
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center mb-10"
@@ -1237,7 +1281,11 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t px-6 py-12" style={{ borderColor: "rgba(79, 124, 255, 0.4)" }}>
+      <footer
+        ref={footerRef}
+        className={`relative z-10 border-t px-6 py-12 scroll-reveal ${footerVisible ? "is-visible" : ""}`}
+        style={{ borderColor: "rgba(79, 124, 255, 0.4)" }}
+      >
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
             <div>
