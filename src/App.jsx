@@ -156,7 +156,9 @@ export default function App() {
           </p>
 
           <a
-            href="#signup"
+            href="https://40y6vu.share-na2.hsforms.com/2bjU9sdWrTwqJVsMHQmls4w"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
             style={{
               background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
@@ -391,7 +393,9 @@ export default function App() {
 
             <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
               <a
-                href="#signup"
+                href="https://40y6vu.share-na2.hsforms.com/2bjU9sdWrTwqJVsMHQmls4w"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
                 style={{
                   background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
@@ -476,7 +480,7 @@ export default function App() {
 
           {/* What Reana helps you do */}
           <h3
-            className="mt-16 text-2xl sm:text-3xl font-bold text-center"
+            className="mt-16 text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
             style={{
               fontFamily: "var(--font-montserrat), sans-serif",
               color: EARLY_ACCESS_COLORS.text,
@@ -545,7 +549,7 @@ export default function App() {
               From &quot;I think...&quot; to &quot;I know.&quot;
             </p>
             <h3
-              className="text-2xl sm:text-3xl font-bold text-center"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
               How it works
@@ -619,7 +623,7 @@ export default function App() {
           {/* Built for real-world investors */}
           <div className="mt-20">
             <h3
-              className="text-2xl sm:text-3xl font-bold text-center"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
               style={{
                 fontFamily: "var(--font-montserrat), sans-serif",
                 color: EARLY_ACCESS_COLORS.text,
@@ -663,7 +667,7 @@ export default function App() {
           {/* FAQ */}
           <div className="mt-20">
             <h3
-              className="text-2xl sm:text-3xl font-bold text-center"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
               Frequently Asked Questions
@@ -758,7 +762,9 @@ export default function App() {
               math is handled—so you can feel confident making the call.
             </p>
             <a
-              href="#signup"
+              href="https://40y6vu.share-na2.hsforms.com/2bjU9sdWrTwqJVsMHQmls4w"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
               style={{
                 background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
@@ -822,7 +828,9 @@ export default function App() {
 
             <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
               <a
-                href="#signup"
+                href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
                 style={{
                   background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
@@ -858,7 +866,7 @@ export default function App() {
           {/* Your clients don't want more opinions */}
           <div className="mt-20" id="agents-how">
             <h3
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight whitespace-nowrap text-center"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-tight whitespace-nowrap text-center"
               style={{
                 fontFamily: "var(--font-montserrat), sans-serif",
                 color: EARLY_ACCESS_COLORS.text,
@@ -910,7 +918,7 @@ export default function App() {
           {/* What Reana helps agents do */}
           <div className="mt-20">
             <h3
-              className="text-2xl sm:text-4xl font-bold text-center"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
               style={{
                 fontFamily: "var(--font-montserrat), sans-serif",
                 color: EARLY_ACCESS_COLORS.text,
@@ -981,7 +989,7 @@ export default function App() {
               Confidence that shows in the conversation.
             </p>
             <h3
-              className="text-2xl sm:text-3xl font-bold text-center"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
               style={{ fontFamily: "var(--font-montserrat), sans-serif", color: EARLY_ACCESS_COLORS.text }}
             >
               How it works for agents
@@ -990,17 +998,17 @@ export default function App() {
               {[
                 {
                   n: "1",
-                  title: "Enter a property",
-                  desc: "Listing, buyer target, or multiple options—Reana organizes the flow.",
+                  title: "Enter a property (or a set of properties)",
+                  desc: "Start with a listing, a buyer target, or multiple options for comparison.",
                 },
                 {
                   n: "2",
-                  title: "Review the snapshot",
-                  desc: "Clean, structured analysis you can explain in plain English.",
+                  title: "Review the decision-ready snapshot",
+                  desc: "Get a clean, structured analysis you can explain in plain English.",
                 },
                 {
                   n: "3",
-                  title: "Share and guide",
+                  title: <>Share and guide<br />the decision</>,
                   desc: "Move buyers forward or help sellers feel confident about pricing.",
                 },
               ].map((step) => (
@@ -1048,14 +1056,14 @@ export default function App() {
                 fontFamily: "var(--font-lato), sans-serif",
               }}
             >
-              Built for buyer&apos;s and listing agents working with 1-4 unit investors.
+              Built for buyer&apos;s agents and listing agents working with 1-4 unit investors.
             </p>
           </div>
 
           {/* Built for agents who want to stand out with clarity */}
           <div className="mt-20">
             <h3
-              className="text-2xl sm:text-4xl font-bold text-center"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
               style={{
                 fontFamily: "var(--font-montserrat), sans-serif",
                 color: EARLY_ACCESS_COLORS.text,
@@ -1107,7 +1115,7 @@ export default function App() {
       <section className="relative z-10 px-6 py-20">
         <div className="max-w-3xl mx-auto">
           <h2
-            className="text-2xl sm:text-3xl font-bold text-center mb-10"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center mb-10"
             style={{
               fontFamily: "var(--font-montserrat), sans-serif",
               color: EARLY_ACCESS_COLORS.text,
@@ -1203,7 +1211,9 @@ export default function App() {
               Join the list for launch updates and early access invites. Reduce client FUD. Increase confident decisions—for buyers and sellers.
             </p>
             <a
-              href="#signup"
+              href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
               style={{
                 background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
