@@ -56,13 +56,11 @@ export default function App() {
   const [investorsRef, investorsVisible] = useScrollReveal();
   const [investorsProRef, investorsProVisible] = useScrollReveal();
   const [investorsHelpRef, investorsHelpVisible] = useScrollReveal();
-  const [investorsHowRef, investorsHowVisible] = useScrollReveal();
   const [investorsBuiltRef, investorsBuiltVisible] = useScrollReveal();
   const [investorsFaqRef, investorsFaqVisible] = useScrollReveal();
   const [agentsRef, agentsVisible] = useScrollReveal();
   const [agentsClientsRef, agentsClientsVisible] = useScrollReveal();
   const [agentsHelpRef, agentsHelpVisible] = useScrollReveal();
-  const [agentsConfidenceRef, agentsConfidenceVisible] = useScrollReveal();
   const [agentsBuiltRef, agentsBuiltVisible] = useScrollReveal();
   const [faqRef, faqVisible] = useScrollReveal();
   const [footerRef, footerVisible] = useScrollReveal();
@@ -531,7 +529,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Investors — Section 3: What Reana helps you do */}
+      {/* Investors — Section 3: What Reana helps you do + From "I think..." to "I know." */}
       <section
         ref={investorsHelpRef}
         className={`relative z-10 px-6 py-24 scroll-reveal ${investorsHelpVisible ? "is-visible" : ""}`}
@@ -594,17 +592,10 @@ export default function App() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Investors — Section 4: From "I think..." to "I know." */}
-      <section
-        ref={investorsHowRef}
-        className={`relative z-10 px-6 py-24 scroll-reveal ${investorsHowVisible ? "is-visible" : ""}`}
-      >
-        <div className="max-w-5xl mx-auto">
+          {/* From "I think..." to "I know." */}
           <p
-            className="text-center text-sm sm:text-base mb-8"
+            className="mt-20 text-center text-sm sm:text-base mb-8"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
@@ -685,7 +676,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Investors — Section 5: Built for real-world investors */}
+      {/* Investors — Section 4: Built for real-world investors */}
       <section
         ref={investorsBuiltRef}
         className={`relative z-10 px-6 py-24 scroll-reveal ${investorsBuiltVisible ? "is-visible" : ""}`}
@@ -734,7 +725,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Investors — Section 6: Frequently Asked Questions */}
+      {/* Investors — Section 5: Frequently Asked Questions */}
       <section
         ref={investorsFaqRef}
         className={`relative z-10 px-6 py-24 scroll-reveal ${investorsFaqVisible ? "is-visible" : ""}`}
@@ -999,7 +990,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Agents — Section 3: What Reana helps agents do */}
+      {/* Agents — Section 3: What Reana helps agents do + Confidence that shows in the conversation */}
       <section
         ref={agentsHelpRef}
         className={`relative z-10 px-6 py-24 scroll-reveal ${agentsHelpVisible ? "is-visible" : ""}`}
@@ -1063,17 +1054,10 @@ export default function App() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Agents — Section 4: Confidence that shows in the conversation */}
-      <section
-        ref={agentsConfidenceRef}
-        className={`relative z-10 px-6 py-24 scroll-reveal ${agentsConfidenceVisible ? "is-visible" : ""}`}
-      >
-        <div className="max-w-5xl mx-auto">
+          {/* Confidence that shows in the conversation */}
           <p
-            className="text-center text-sm sm:text-base mb-8"
+            className="mt-20 text-center text-sm sm:text-base mb-8"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
@@ -1154,7 +1138,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Agents — Section 5: Built for agents who want to stand out with clarity */}
+      {/* Agents — Section 4: Built for agents who want to stand out with clarity */}
       <section
         ref={agentsBuiltRef}
         className={`relative z-10 px-6 py-24 scroll-reveal ${agentsBuiltVisible ? "is-visible" : ""}`}
