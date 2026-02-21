@@ -9,6 +9,10 @@ import {
   ArrowRight,
   ChevronDown,
 } from "lucide-react";
+import { getUtmParamsFromSearch, trackEarlyAccessSubmitted } from "./lib/analytics";
+
+const UTM_STORAGE_KEY = "ea_landing_utm";
+const SUBMIT_TRACKED_KEY = "ea_submit_tracked";
 
 function useScrollReveal(opts = {}) {
   const { threshold = 0.12, rootMargin = "0px 0px -80px 0px", initialVisible = false } = opts;
@@ -50,6 +54,7 @@ const EARLY_ACCESS_COLORS = {
 
 export default function App() {
   const [role, setRole] = useState("investor");
+  const isThanksPage = typeof window !== "undefined" && window.location.pathname === "/thanks";
 
   const [heroRef, heroVisible] = useScrollReveal({ initialVisible: true });
   const [whyRef, whyVisible] = useScrollReveal();
@@ -65,11 +70,90 @@ export default function App() {
   const [faqRef, faqVisible] = useScrollReveal();
   const [footerRef, footerVisible] = useScrollReveal();
 
+  useEffect(() => {
+    if (typeof window === "undefined" || isThanksPage) return;
+
+    const utmParams = getUtmParamsFromSearch(window.location.search);
+    const hasUtm = Object.keys(utmParams).length > 0;
+    if (hasUtm) {
+      window.sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utmParams));
+    }
+  }, [isThanksPage]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !isThanksPage) return;
+    if (window.sessionStorage.getItem(SUBMIT_TRACKED_KEY) === "1") return;
+
+    const thanksUtm = getUtmParamsFromSearch(window.location.search);
+    const hasThanksUtm = Object.keys(thanksUtm).length > 0;
+
+    let storedUtm = {};
+    const stored = window.sessionStorage.getItem(UTM_STORAGE_KEY);
+    if (stored) {
+      try {
+        storedUtm = JSON.parse(stored);
+      } catch {
+        storedUtm = {};
+      }
+    }
+
+    trackEarlyAccessSubmitted({
+      page_url: window.location.href,
+      ...(hasThanksUtm ? thanksUtm : storedUtm),
+    });
+
+    window.sessionStorage.setItem(SUBMIT_TRACKED_KEY, "1");
+  }, [isThanksPage]);
+
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  if (isThanksPage) {
+    return (
+      <div
+        className="min-h-screen text-white antialiased flex items-center justify-center px-6"
+        style={{
+          background: EARLY_ACCESS_COLORS.bg,
+          fontFamily: "var(--font-lato), sans-serif",
+        }}
+      >
+        <div
+          className="w-full max-w-2xl rounded-2xl border p-8 sm:p-10 text-center"
+          style={{
+            background: EARLY_ACCESS_COLORS.bgCard,
+            borderColor: EARLY_ACCESS_COLORS.borderMuted,
+          }}
+        >
+          <h1
+            className="text-3xl sm:text-4xl font-bold"
+            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+          >
+            Thanks, you&apos;re on the early access list.
+          </h1>
+          <p
+            className="mt-4 text-base sm:text-lg"
+            style={{ color: EARLY_ACCESS_COLORS.textSecondary }}
+          >
+            We&apos;ll reach out when your access wave opens. Keep an eye on your inbox for launch updates.
+          </p>
+          <a
+            href="/"
+            className="inline-flex mt-8 items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95"
+            style={{
+              background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
+              fontFamily: "var(--font-montserrat), sans-serif",
+            }}
+          >
+            Back to Reana
+            <ArrowRight className="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
