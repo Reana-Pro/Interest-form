@@ -8,6 +8,7 @@ import {
   User,
   ArrowRight,
   ChevronDown,
+  Menu,
 } from "lucide-react";
 import { getUtmParamsFromSearch, trackEarlyAccessSubmitted } from "./lib/analytics";
 
@@ -51,6 +52,112 @@ const EARLY_ACCESS_COLORS = {
   gradientTo: "#C77BFF",
   tagBg: "rgba(79, 124, 255, 0.15)",
 };
+
+function RightEdgeNavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const leaveTimeoutRef = useRef(null);
+
+  const clearLeaveTimeout = () => {
+    if (leaveTimeoutRef.current) {
+      clearTimeout(leaveTimeoutRef.current);
+      leaveTimeoutRef.current = null;
+    }
+  };
+
+  const handleMouseEnter = () => {
+    clearLeaveTimeout();
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    leaveTimeoutRef.current = setTimeout(() => setIsOpen(false), 200);
+  };
+
+  useEffect(() => {
+    return () => clearLeaveTimeout();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      document.addEventListener("click", handleClickOutside);
+    }
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [isOpen]);
+
+  const linkClass =
+    "block w-full text-left py-2.5 px-4 rounded-lg text-white no-underline font-medium transition-colors hover:opacity-95 ";
+  const linkStyle = { fontFamily: "var(--font-lato), sans-serif" };
+
+  return (
+    <div
+      ref={menuRef}
+      className="fixed right-6 top-6 z-20 flex flex-col items-end"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-lg border border-white/20 text-white hover:bg-white/10 transition-colors"
+        style={{ background: "rgba(26, 26, 48, 0.9)" }}
+        aria-label="Open menu"
+        aria-expanded={isOpen}
+      >
+        <Menu className="w-5 h-5" strokeWidth={2} />
+      </button>
+
+      {isOpen && (
+        <div
+          className="mt-2 rounded-xl border border-white/10 overflow-hidden transition-all duration-200 shadow-xl"
+          style={{
+            background: "rgba(26, 26, 48, 0.95)",
+            backdropFilter: "blur(12px)",
+            minWidth: 160,
+          }}
+        >
+          <ul className="list-none m-0 p-2 flex flex-col gap-0.5">
+            <li>
+              <a
+                href="#home"
+                className={linkClass}
+                style={linkStyle}
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#investors"
+                className={linkClass}
+                style={linkStyle}
+                onClick={() => setIsOpen(false)}
+              >
+                Investors
+              </a>
+            </li>
+            <li>
+              <a
+                href="#agents"
+                className={linkClass}
+                style={linkStyle}
+                onClick={() => setIsOpen(false)}
+              >
+                Agents
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function App() {
   const [role, setRole] = useState("investor");
@@ -178,13 +285,12 @@ export default function App() {
         }}
       />
 
-      {/* Header */}
+      {/* Header — logo only; nav moves to right-edge hover bar */}
       <header className="relative z-10 border-b border-white/10">
-        <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center">
-          <div className="flex-1 min-w-0" aria-hidden />
+        <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-center">
           <a
             href="#home"
-            className="flex flex-1 justify-center items-center no-underline shrink-0"
+            className="flex items-center no-underline shrink-0"
           >
             <img
               src="/login-page-logo.png"
@@ -194,37 +300,11 @@ export default function App() {
               className="object-contain w-auto h-20 sm:h-24"
             />
           </a>
-          <ul className="flex-1 flex justify-end items-center gap-8 list-none m-0 p-0 min-w-0">
-            <li>
-              <a
-                href="#home"
-                className="text-white no-underline font-medium hover:opacity-90 transition-opacity"
-                style={{ fontFamily: "var(--font-lato), sans-serif" }}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#investors"
-                className="text-white no-underline font-medium hover:opacity-90 transition-opacity"
-                style={{ fontFamily: "var(--font-lato), sans-serif" }}
-              >
-                Investors
-              </a>
-            </li>
-            <li>
-              <a
-                href="#agents"
-                className="text-white no-underline font-medium hover:opacity-90 transition-opacity"
-                style={{ fontFamily: "var(--font-lato), sans-serif" }}
-              >
-                Agents
-              </a>
-            </li>
-          </ul>
         </nav>
       </header>
+
+      {/* Right-edge nav bar — appears when user moves toward the right */}
+      <RightEdgeNavBar />
 
       {/* Hero */}
       <section
