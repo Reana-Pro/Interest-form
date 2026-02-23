@@ -906,27 +906,27 @@ export default function App() {
             {[
               {
                 q: "Is Reana for beginners or experienced investors?",
-                a: "Reana is built for both. If you're new to underwriting, it gives you structure and clarity. If you're experienced, it speeds up comparison and keeps your assumptions consistent.",
+                a: "Both. Beginners get structure. Experienced investors get speed.",
               },
               {
                 q: "What property types does it support?",
-                a: "We focus on 1–4 unit residential deals to start, with more property types coming later.",
+                a: "Residential 1–4 unit properties.",
               },
               {
                 q: "Do I still need a spreadsheet?",
-                a: "Reana is designed to replace the messy parts of underwriting and comparison—so you can skip the spreadsheet for analysis and side-by-side deals. Many investors find they don't need one; you can still use your own if you prefer.",
+                a: "Reana builds the spreadsheet for you and does the math automatically. You can edit assumptions if you want—but most people love not starting from a blank spreadsheet.",
               },
               {
                 q: "Will it tell me exactly what to offer?",
-                a: "Reana gives you the numbers and the story—returns, risk, and tradeoffs—so you can decide with confidence. Your offer strategy stays yours.",
+                a: "Reana helps you evaluate and compare and can surface a suggested range based on your inputs. You make the decision—Reana reduces the FUD.",
               },
               {
                 q: "Can I analyze more than one property at a time?",
-                a: "Yes. Reana lets you run analysis on multiple properties and line them up side-by-side—so you can compare returns, risk, and assumptions in one place and choose the best move.",
+                a: "Yes—comparison is the point. You'll be able to compare multiple opportunities quickly.",
               },
               {
                 q: "When can I get access?",
-                a: "We're opening access in small waves. Join the interest list and we'll notify you when onboarding opens for your spot. No spam—just launch updates and early access invites.",
+                a: "Join the list and we'll notify you when investor onboarding opens.",
               },
             ].map((item) => (
               <details
@@ -1375,27 +1375,27 @@ export default function App() {
             {[
               {
                 q: "Is Reana only for investors?",
-                a: "Reana helps both investors and agents. Investors get decision-ready analysis; agents get clear, shareable snapshots to guide buyers and sellers.",
+                a: "No—agents are a core user. It's built to help you support investor clients faster and more clearly.",
               },
               {
                 q: "Will this replace a Comparative Market Analysis?",
-                a: "Reana focuses on income and returns for 1-4 unit deals. It complements how you work—use it alongside CMAs or as a numbers-based story for investment-focused clients.",
+                a: "No. A Comparative Market Analysis is still important. Reana adds an investor-style analysis and side-by-side comparisons that help buyers and sellers feel confident about the numbers behind the decision.",
               },
               {
                 q: "How does this help me close more deals?",
-                a: "Less back-and-forth, clearer comparisons, and confident pricing. You show up as the calm expert so buyers and sellers can decide faster.",
+                a: "Clarity reduces hesitation. Clients decide sooner, make stronger offers, and stay engaged.",
               },
               {
                 q: "Can I use this for multiple clients?",
-                a: "Yes. Run analysis for different listings or buyer targets and share decision-ready snapshots with each client.",
+                a: "Yes. It's designed for repeat use and a consistent workflow.",
               },
               {
-                q: "Is it limited to 1-4 units?",
-                a: "We focus on 1-4 unit residential properties to start, with more property types coming later.",
+                q: "Is it limited to 1–4 units?",
+                a: "Yes—Reana is focused on residential 1–4 unit properties.",
               },
               {
                 q: "When can I get access?",
-                a: "We're opening access in waves. Join the interest list and we'll notify you when onboarding opens.",
+                a: "Join the list and we'll notify you when agent onboarding opens.",
               },
             ].map((item) => (
               <details
