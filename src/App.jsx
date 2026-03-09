@@ -285,7 +285,7 @@ export default function App() {
         }}
       />
 
-      {/* Header — logo only; nav moves to right-edge hover bar */}
+      {/* Header — Reana metallic logo; nav in top-right menu */}
       <header className="relative z-10 border-b border-white/10">
         <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-center">
           <a
@@ -293,7 +293,7 @@ export default function App() {
             className="flex items-center no-underline shrink-0"
           >
             <img
-              src="/login-page-logo.png"
+              src="/reana-logo.png"
               alt="Reana — Data driven decisions at speed"
               width={280}
               height={92}
@@ -360,7 +360,7 @@ export default function App() {
           </p>
 
           <a
-            href="https://40y6vu.share-na2.hsforms.com/2bjU9sdWrTwqJVsMHQmls4w"
+            href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
@@ -601,7 +601,7 @@ export default function App() {
 
             <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
               <a
-                href="https://40y6vu.share-na2.hsforms.com/2bjU9sdWrTwqJVsMHQmls4w"
+                href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
@@ -989,7 +989,7 @@ export default function App() {
               math is handled—so you can feel confident making the call.
             </p>
             <a
-              href="https://40y6vu.share-na2.hsforms.com/2bjU9sdWrTwqJVsMHQmls4w"
+              href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
