@@ -2060,7 +2060,15 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <AppFooter refProp={footerRef} isVisible={footerVisible} homeHref="#home" />
+      <AppFooter
+        refProp={footerRef}
+        isVisible={footerVisible}
+        homeHref="#home"
+        quickLinks={[
+          { label: "For Agents", href: "#agents" },
+          { label: "For Investors", href: "#investors" },
+        ]}
+      />
     </div>
   );
 }
