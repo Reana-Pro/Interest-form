@@ -39,7 +39,7 @@ function useScrollReveal(opts = {}) {
 }
 
 const EARLY_ACCESS_COLORS = {
-  bg: "#0a0a14",
+  bg: "#0A0E27",
   bgCard: "rgba(26, 26, 48, 0.8)",
   text: "#FFFFFF",
   textMuted: "rgba(255, 255, 255, 0.85)",
@@ -51,6 +51,367 @@ const EARLY_ACCESS_COLORS = {
   gradientMid: "#6D6DED",
   gradientTo: "#C77BFF",
   tagBg: "rgba(79, 124, 255, 0.15)",
+};
+
+const PRIVACY_POLICY = {
+  title: "Privacy Policy",
+  effectiveDate: "August 1, 2025",
+  intro: [
+    "Reana is a product of Jascot Development LLC, a Wyoming limited liability company (“Jascot,” “we,” “our,” or “us”).",
+    "This Privacy Policy explains how we collect, use, share, and protect your information when you use the Reana website, mobile application, and related services (collectively, the “Services”).",
+    "By using the Services, you agree to the practices described in this Policy.",
+  ],
+  sections: [
+    {
+      heading: "1. Information We Collect",
+      blocks: [
+        { type: "subheading", content: "1.1 Information You Provide" },
+        {
+          type: "list",
+          items: [
+            "Account Information: name, email address, and login credentials when you create an account.",
+            "Payment Information: payment method details processed securely by our third-party payment processors (we do not store full payment card details).",
+            "Communications: messages you send to us, including support requests, surveys, or feedback.",
+            "Recruitment Data: resumes, portfolios, and application information (retained for one year in compliance with employment law).",
+          ],
+        },
+        { type: "subheading", content: "1.2 Information We Collect Automatically" },
+        {
+          type: "list",
+          items: [
+            "Usage Data: interactions with the Services, pages visited, features used, date and time of activity.",
+            "Device and Log Data: IP address, browser type, operating system, referring/exit pages.",
+            "Analytics: collected via Google Analytics and similar tools.",
+          ],
+        },
+        { type: "subheading", content: "1.3 Information From Third Parties" },
+        {
+          type: "list",
+          items: [
+            "Forms and Hosting: Information submitted via Google Forms and stored with Hostinger and other service providers.",
+            "Integrations: Information from third-party partners if you link accounts or use integrated services.",
+          ],
+        },
+      ],
+    },
+    {
+      heading: "2. How We Use Information",
+      blocks: [
+        { type: "paragraph", content: "We use your information to:" },
+        {
+          type: "list",
+          items: [
+            "Provide, operate, and improve the Services.",
+            "Personalize user experience and deliver relevant content.",
+            "Process payments and manage subscriptions.",
+            "Communicate with you, including updates, offers, and support.",
+            "Ensure security, prevent fraud, and comply with legal obligations.",
+            "Evaluate and improve hiring/recruitment processes.",
+          ],
+        },
+        { type: "paragraph", content: "We do not sell personal information." },
+      ],
+    },
+    {
+      heading: "3. How We Share Information",
+      blocks: [
+        { type: "paragraph", content: "We may share your information as follows:" },
+        {
+          type: "list",
+          items: [
+            "Service Providers: with vendors such as payment processors, hosting providers, analytics services, and CRM tools who assist in operating the Services.",
+            "Business Transfers: in connection with mergers, acquisitions, or sale of company assets.",
+            "Legal Compliance: if required by law, subpoena, or government request.",
+            "Consent: when you direct us to share information or give explicit consent.",
+          ],
+        },
+        { type: "subheading", content: "Do Not Sell or Share My Personal Information" },
+        {
+          type: "paragraph",
+          content:
+            "We do not sell or share personal information as defined under U.S. state privacy laws, including the California Consumer Privacy Act (CCPA/CPRA). If our practices change, we will update this Policy and provide the required opt-out options.",
+        },
+      ],
+    },
+    {
+      heading: "4. Cookies and Tracking",
+      blocks: [
+        { type: "paragraph", content: "We use cookies, pixels, and similar technologies to:" },
+        {
+          type: "list",
+          items: [
+            "Remember user preferences.",
+            "Analyze usage trends.",
+            "Improve the functionality and security of the Services.",
+          ],
+        },
+        {
+          type: "paragraph",
+          content:
+            "You may disable cookies through your browser, but some features may not function properly.",
+        },
+      ],
+    },
+    {
+      heading: "5. Data Retention",
+      blocks: [
+        {
+          type: "list",
+          items: [
+            "Account and subscription data: retained as long as your account is active.",
+            "Resumes/applicant information: retained for 1 year, then deleted.",
+            "Analytics and log data: retained as needed for operations and compliance.",
+            "We may retain minimal information as required by law (e.g., tax records).",
+          ],
+        },
+      ],
+    },
+    {
+      heading: "6. Data Security",
+      blocks: [
+        {
+          type: "paragraph",
+          content:
+            "We use administrative, technical, and physical safeguards to protect your data. However, no system is 100% secure, and we cannot guarantee absolute security.",
+        },
+      ],
+    },
+    {
+      heading: "7. Your Rights",
+      blocks: [
+        { type: "subheading", content: "7.1 U.S. State Privacy Rights" },
+        {
+          type: "paragraph",
+          content:
+            "Residents of certain U.S. states, including California, Colorado, Connecticut, Virginia, and Utah, may have specific privacy rights under state law. These rights may include:",
+        },
+        {
+          type: "list",
+          items: [
+            "Right to know what categories of personal information we collect and how we use it.",
+            "Right to access specific personal information we hold about you.",
+            "Right to request deletion of your personal information.",
+            "Right to correct inaccurate personal information.",
+            "Right to opt-out of targeted advertising or the “sale” of personal information (we do not sell personal information).",
+          ],
+        },
+        {
+          type: "paragraph",
+          content:
+            "To exercise these rights, please contact us at info@jascotdevelopment.com. We will verify your request as required by law.",
+        },
+        { type: "subheading", content: "7.2 EU/EEA (GDPR) Rights" },
+        {
+          type: "list",
+          items: [
+            "Right of access to your personal data.",
+            "Right to rectification or deletion.",
+            "Right to restrict or object to processing.",
+            "Right to data portability.",
+            "Right to lodge a complaint with your supervisory authority.",
+          ],
+        },
+      ],
+    },
+    {
+      heading: "8. International Users",
+      blocks: [
+        {
+          type: "paragraph",
+          content:
+            "If you access the Services from outside the U.S., your data may be transferred and processed in the United States, where privacy laws may not provide the same level of protection as your jurisdiction.",
+        },
+      ],
+    },
+    {
+      heading: "9. Children’s Privacy",
+      blocks: [
+        {
+          type: "paragraph",
+          content:
+            "The Services are not directed to individuals under 18. We do not knowingly collect data from minors. If we discover we have unintentionally collected information from a minor, we will delete it.",
+        },
+      ],
+    },
+    {
+      heading: "10. Changes to This Policy",
+      blocks: [
+        {
+          type: "paragraph",
+          content:
+            "We may update this Privacy Policy from time to time. Updates will be posted here with the “Effective Date” revised. Continued use of the Services after changes indicates your acceptance of the new Policy.",
+        },
+        { type: "subheading", content: "Policy Review" },
+        {
+          type: "paragraph",
+          content:
+            "We review our Privacy Policy at least once every 12 months and update it as needed to remain compliant with applicable U.S. state and federal privacy laws.",
+        },
+      ],
+    },
+    {
+      heading: "11. Contact Us",
+      blocks: [
+        { type: "paragraph", content: "For questions or privacy requests:" },
+        { type: "paragraph", content: "Jascot Development LLC" },
+        { type: "paragraph", content: "Email: info@jascotdevelopment.com" },
+      ],
+    },
+  ],
+};
+
+const TERMS_OF_SERVICE = {
+  title: "Terms of Service",
+  effectiveDate: "August 1, 2025",
+  intro: [
+    "Reana is a product of Jascot Development LLC, a Wyoming limited liability company (“Jascot,” “we,” “our,” or “us”).",
+    "By accessing or using the Reana website, mobile application, or related services (collectively, the “Services”), you agree to be bound by these Terms of Service (“Terms”). If you do not agree, you must not use the Services.",
+  ],
+  sections: [
+    {
+      heading: "1. Eligibility and Accounts",
+      blocks: [
+        { type: "paragraph", content: "1.1 Minimum Age: You must be at least 18 years of age to use the Services. By using the Services, you represent that you meet this requirement." },
+        { type: "paragraph", content: "1.2 Account Creation: To access certain features, you must create an account. You agree to provide accurate, current, and complete information and to update such information as needed." },
+        { type: "paragraph", content: "1.3 Security: You are responsible for maintaining the confidentiality of your login credentials and all activities under your account. Notify us immediately of any unauthorized use." },
+      ],
+    },
+    {
+      heading: "2. Purpose of Services",
+      blocks: [
+        { type: "paragraph", content: "2.1 Educational and Informational Use Only: Reana provides tools and insights to assist with real estate investment analysis. It is not a substitute for professional financial, investment, legal, or tax advice." },
+        { type: "paragraph", content: "2.2 No Guarantee of Accuracy: While we strive for accuracy, the Services may contain errors or incomplete information. You are solely responsible for verifying any outputs and making independent decisions." },
+        { type: "paragraph", content: "2.3 No Fiduciary Relationship: Your use of Reana does not create a fiduciary or advisory relationship with Jascot." },
+      ],
+    },
+    {
+      heading: "3. Subscriptions, Fees, and Payment",
+      blocks: [
+        { type: "paragraph", content: "3.1 Subscription Plans: Some features require a paid subscription. Plans and pricing are posted on the Services." },
+        { type: "paragraph", content: "3.2 Billing: By subscribing, you authorize us (or our third-party payment processor) to charge your chosen payment method on a recurring basis until you cancel." },
+        { type: "paragraph", content: "3.3 Free Trials and Promotions: Free trial terms, if offered, will be explained at sign-up. We reserve the right to modify or terminate trial offers at any time." },
+        { type: "paragraph", content: "3.4 Refunds: Except where required by law, payments are non-refundable." },
+        { type: "paragraph", content: "3.5 Price Changes: We may change subscription fees with reasonable notice. Continued use of the Services after a price change constitutes acceptance of the new pricing." },
+      ],
+    },
+    {
+      heading: "4. Acceptable Use",
+      blocks: [
+        { type: "paragraph", content: "You agree not to:" },
+        {
+          type: "list",
+          items: [
+            "Use the Services for unlawful, fraudulent, or harmful purposes.",
+            "Attempt to reverse engineer, copy, or distribute the Services without consent.",
+            "Interfere with the operation, security, or integrity of the Services.",
+            "Upload malicious code or attempt unauthorized access.",
+          ],
+        },
+      ],
+    },
+    {
+      heading: "5. Intellectual Property",
+      blocks: [
+        { type: "paragraph", content: "5.1 Ownership: The Services, including software, logos, content, and designs, are the property of Jascot Development LLC and are protected by copyright, trademark, and other laws." },
+        { type: "paragraph", content: "5.2 License to You: Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Services for personal or internal business purposes." },
+        { type: "paragraph", content: "5.3 Restrictions: You may not use our marks, content, or materials without prior written consent." },
+      ],
+    },
+    {
+      heading: "6. Third-Party Services and Data",
+      blocks: [
+        { type: "paragraph", content: "6.1 Integrations: Reana may integrate with third-party tools and data providers. We are not responsible for the accuracy, availability, or performance of these third parties." },
+        { type: "paragraph", content: "6.2 Third-Party Terms: Your use of third-party services may be subject to their separate terms and policies." },
+      ],
+    },
+    {
+      heading: "7. Disclaimer of Warranties",
+      blocks: [
+        { type: "paragraph", content: "The Services are provided “as is” and “as available.”" },
+        {
+          type: "list",
+          items: [
+            "We make no warranties regarding accuracy, reliability, availability, or suitability for your purposes.",
+            "We disclaim all implied warranties, including merchantability, fitness for a particular purpose, and non-infringement.",
+          ],
+        },
+      ],
+    },
+    {
+      heading: "8. Limitation of Liability",
+      blocks: [
+        { type: "paragraph", content: "To the fullest extent permitted by law:" },
+        {
+          type: "list",
+          items: [
+            "Jascot and its affiliates are not liable for indirect, incidental, consequential, special, punitive, or exemplary damages.",
+            "Our total liability for all claims in any 12-month period will not exceed the greater of (a) the amount you paid for the Services in that period or (b) $100.",
+          ],
+        },
+        { type: "paragraph", content: "Some jurisdictions may not allow certain exclusions, so these limitations may not apply to you." },
+      ],
+    },
+    {
+      heading: "9. Indemnification",
+      blocks: [
+        { type: "paragraph", content: "You agree to indemnify, defend, and hold harmless Jascot, its affiliates, officers, employees, and agents from any claims, damages, liabilities, costs, or expenses (including attorneys’ fees) arising from:" },
+        {
+          type: "list",
+          items: [
+            "Your use of the Services;",
+            "Your violation of these Terms;",
+            "Your violation of any rights of a third party.",
+          ],
+        },
+      ],
+    },
+    {
+      heading: "10. Dispute Resolution",
+      blocks: [
+        { type: "paragraph", content: "10.1 Informal Resolution: Before filing a claim, you agree to try to resolve the dispute informally by contacting us at info@jascotdevelopment.com." },
+        { type: "paragraph", content: "10.2 Arbitration Agreement: Any disputes arising under these Terms shall be resolved by binding arbitration, administered by the American Arbitration Association (AAA) under its rules, in Wyoming." },
+        { type: "paragraph", content: "10.3 Class Action Waiver: You agree to resolve disputes only on an individual basis. Class, collective, or representative actions are not permitted." },
+        { type: "paragraph", content: "10.4 Exceptions: You may bring claims in small claims court if they qualify." },
+      ],
+    },
+    {
+      heading: "11. Termination",
+      blocks: [
+        { type: "paragraph", content: "We may suspend or terminate your account or access at any time for violations of these Terms or misuse of the Services. You may cancel your account at any time." },
+      ],
+    },
+    {
+      heading: "12. Changes to Terms",
+      blocks: [
+        { type: "paragraph", content: "We may revise these Terms from time to time. Updates will be posted with the “Effective Date” revised above. Continued use of the Services after changes constitutes acceptance." },
+      ],
+    },
+    {
+      heading: "13. Governing Law",
+      blocks: [
+        { type: "paragraph", content: "These Terms are governed by the laws of the State of Wyoming, excluding its conflict of law rules." },
+      ],
+    },
+    {
+      heading: "14. Entire Agreement",
+      blocks: [
+        { type: "paragraph", content: "These Terms, along with our Privacy Policy, constitute the entire agreement between you and Jascot regarding use of the Services and supersede all prior agreements." },
+      ],
+    },
+    {
+      heading: "15. Contact Information",
+      blocks: [
+        { type: "paragraph", content: "For questions or concerns about these Terms:" },
+        { type: "paragraph", content: "Jascot Development LLC" },
+        { type: "paragraph", content: "Email: info@jascotdevelopment.com" },
+      ],
+    },
+  ],
+};
+
+const LEGAL_PAGES = {
+  "/privacy-policy": PRIVACY_POLICY,
+  "/terms-of-service": TERMS_OF_SERVICE,
 };
 
 function RightEdgeNavBar() {
@@ -159,9 +520,244 @@ function RightEdgeNavBar() {
   );
 }
 
+function PageBackground() {
+  return (
+    <div
+      className="fixed inset-0 pointer-events-none opacity-40"
+      aria-hidden
+      style={{
+        backgroundImage: `radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,0.3), transparent),
+          radial-gradient(1.5px 1.5px at 40px 70px, rgba(255,255,255,0.2), transparent),
+          radial-gradient(1.5px 1.5px at 50px 160px, rgba(255,255,255,0.25), transparent),
+          radial-gradient(1.5px 1.5px at 90px 40px, rgba(255,255,255,0.2), transparent),
+          radial-gradient(1.5px 1.5px at 130px 80px, rgba(255,255,255,0.3), transparent)`,
+        backgroundSize: "200px 200px",
+      }}
+    />
+  );
+}
+
+function AppHeader({ homeHref = "/", showBackLink = false }) {
+  return (
+    <header className="relative z-10 border-b border-white/10">
+      <nav
+        className={`max-w-6xl mx-auto px-6 py-5 flex items-center gap-6 ${
+          showBackLink ? "justify-between" : "justify-center"
+        }`}
+      >
+        <a href={homeHref} className="flex items-center no-underline shrink-0">
+          <img
+            src="/reana-logo-2.png"
+            alt="Reana — Data driven decisions at speed"
+            width={280}
+            height={92}
+            className="object-contain w-auto h-20 sm:h-24"
+          />
+        </a>
+        {showBackLink && (
+          <a
+            href="/"
+            className="text-sm sm:text-base font-semibold no-underline transition-opacity hover:opacity-90"
+            style={{
+              color: EARLY_ACCESS_COLORS.text,
+              fontFamily: "var(--font-montserrat), sans-serif",
+            }}
+          >
+            Back to Home
+          </a>
+        )}
+      </nav>
+    </header>
+  );
+}
+
+function AppFooter({ refProp = null, isVisible = true, homeHref = "/", quickLinks = null }) {
+  const resolvedQuickLinks = quickLinks ?? [
+    { label: "For Agents", href: `${homeHref}#agents` },
+    { label: "For Investors", href: `${homeHref}#investors` },
+  ];
+
+  return (
+    <footer
+      ref={refProp}
+      className={`relative z-10 border-t px-6 py-12${refProp ? ` scroll-reveal ${isVisible ? "is-visible" : ""}` : ""}`}
+      style={{ borderColor: "rgba(79, 124, 255, 0.4)" }}
+    >
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          <div>
+            <a href={homeHref} className="flex items-center gap-2 no-underline">
+              <img src="/reana-logo-2.png" alt="Reana" className="h-10 w-auto object-contain" />
+            </a>
+            <p
+              className="mt-2 text-xs"
+              style={{
+                color: EARLY_ACCESS_COLORS.textSecondary,
+                fontFamily: "var(--font-lato), sans-serif",
+              }}
+            >
+              DATA DRIVEN DECISIONS AT SPEED
+            </p>
+          </div>
+          <div>
+            <p
+              className="font-semibold text-sm mb-3"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif", color: EARLY_ACCESS_COLORS.text }}
+            >
+              Quick
+            </p>
+            <ul className="list-none p-0 m-0 space-y-1">
+              {resolvedQuickLinks.map((link) => (
+                <li key={link.label} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#4F7CFF" }} />
+                  <a
+                    href={link.href}
+                    className="text-sm no-underline hover:opacity-90"
+                    style={{ color: EARLY_ACCESS_COLORS.text, fontFamily: "var(--font-lato), sans-serif" }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p
+              className="font-semibold text-sm mb-3"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif", color: EARLY_ACCESS_COLORS.text }}
+            >
+              Legal
+            </p>
+            <ul className="list-none p-0 m-0 space-y-1">
+              {[
+                { label: "Privacy Policy", href: "/privacy-policy" },
+                { label: "Terms of Service", href: "/terms-of-service" },
+              ].map((link) => (
+                <li key={link.label} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#4F7CFF" }} />
+                  <a
+                    href={link.href}
+                    className="text-sm no-underline hover:opacity-90"
+                    style={{ color: EARLY_ACCESS_COLORS.text, fontFamily: "var(--font-lato), sans-serif" }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p
+          className="text-center text-xs pt-6 border-t m-0"
+          style={{
+            color: EARLY_ACCESS_COLORS.textSecondary,
+            fontFamily: "var(--font-lato), sans-serif",
+            borderColor: "rgba(255,255,255,0.1)",
+          }}
+        >
+          © 2026 Reana. Building the future of real estate analysis.
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+function LegalDocument({ document }) {
+  return (
+    <div className="legal-prose">
+      {document.intro.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      {document.sections.map((section) => (
+        <section key={section.heading} className="legal-section">
+          <h2>{section.heading}</h2>
+          {section.blocks.map((block) => {
+            if (block.type === "subheading") {
+              return <h3 key={block.content}>{block.content}</h3>;
+            }
+            if (block.type === "list") {
+              return (
+                <ul key={block.items.join("|")}>
+                  {block.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              );
+            }
+            return <p key={block.content}>{block.content}</p>;
+          })}
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function LegalPage({ document }) {
+  return (
+    <div
+      className="min-h-screen text-white antialiased"
+      style={{
+        background: EARLY_ACCESS_COLORS.bg,
+        fontFamily: "var(--font-lato), sans-serif",
+      }}
+    >
+      <PageBackground />
+      <AppHeader showBackLink />
+      <main className="relative z-10 px-6 py-16 sm:py-20">
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl">
+            <p
+              className="text-sm uppercase tracking-[0.28em]"
+              style={{ color: EARLY_ACCESS_COLORS.textSecondary }}
+            >
+              Legal
+            </p>
+            <h1
+              className="mt-4 text-4xl sm:text-5xl font-bold leading-tight"
+              style={{
+                fontFamily: "var(--font-montserrat), sans-serif",
+                background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              {document.title}
+            </h1>
+            <p className="mt-5 text-base sm:text-lg" style={{ color: EARLY_ACCESS_COLORS.textMuted }}>
+              Effective Date: {document.effectiveDate}
+            </p>
+          </div>
+
+          <div
+            className="mt-10 rounded-[28px] border px-6 py-8 sm:px-10 sm:py-12"
+            style={{
+              background: "linear-gradient(180deg, rgba(20, 29, 76, 0.82), rgba(15, 20, 52, 0.92))",
+              borderColor: "rgba(109, 109, 237, 0.42)",
+              boxShadow: "0 20px 60px rgba(4, 9, 30, 0.35)",
+            }}
+          >
+            <LegalDocument document={document} />
+          </div>
+        </div>
+      </main>
+      <AppFooter
+        homeHref="/"
+        quickLinks={[
+          { label: "Home", href: "/" },
+          { label: "Join Early Access", href: "/#home" },
+        ]}
+      />
+    </div>
+  );
+}
+
 export default function App() {
   const [role, setRole] = useState("investor");
-  const isThanksPage = typeof window !== "undefined" && window.location.pathname === "/thanks";
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+  const isThanksPage = pathname === "/thanks";
+  const legalDocument = LEGAL_PAGES[pathname];
+  const isLegalPage = Boolean(legalDocument);
 
   const [heroRef, heroVisible] = useScrollReveal({ initialVisible: true });
   const [whyRef, whyVisible] = useScrollReveal();
@@ -178,14 +774,14 @@ export default function App() {
   const [footerRef, footerVisible] = useScrollReveal();
 
   useEffect(() => {
-    if (typeof window === "undefined" || isThanksPage) return;
+    if (typeof window === "undefined" || pathname !== "/") return;
 
     const utmParams = getUtmParamsFromSearch(window.location.search);
     const hasUtm = Object.keys(utmParams).length > 0;
     if (hasUtm) {
       window.sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utmParams));
     }
-  }, [isThanksPage]);
+  }, [pathname]);
 
   useEffect(() => {
     if (typeof window === "undefined" || !isThanksPage) return;
@@ -227,8 +823,9 @@ export default function App() {
           fontFamily: "var(--font-lato), sans-serif",
         }}
       >
+        <PageBackground />
         <div
-          className="w-full max-w-2xl rounded-2xl border p-8 sm:p-10 text-center"
+          className="relative z-10 w-full max-w-2xl rounded-2xl border p-8 sm:p-10 text-center"
           style={{
             background: EARLY_ACCESS_COLORS.bgCard,
             borderColor: EARLY_ACCESS_COLORS.borderMuted,
@@ -262,6 +859,10 @@ export default function App() {
     );
   }
 
+  if (isLegalPage) {
+    return <LegalPage document={legalDocument} />;
+  }
+
   return (
     <div
       className="min-h-screen text-white antialiased"
@@ -272,36 +873,10 @@ export default function App() {
       }}
     >
       {/* Subtle starfield / specks background */}
-      <div
-        className="fixed inset-0 pointer-events-none opacity-40"
-        aria-hidden
-        style={{
-          backgroundImage: `radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,0.3), transparent),
-            radial-gradient(1.5px 1.5px at 40px 70px, rgba(255,255,255,0.2), transparent),
-            radial-gradient(1.5px 1.5px at 50px 160px, rgba(255,255,255,0.25), transparent),
-            radial-gradient(1.5px 1.5px at 90px 40px, rgba(255,255,255,0.2), transparent),
-            radial-gradient(1.5px 1.5px at 130px 80px, rgba(255,255,255,0.3), transparent)`,
-          backgroundSize: "200px 200px",
-        }}
-      />
+      <PageBackground />
 
       {/* Header — Reana metallic logo; nav in top-right menu */}
-      <header className="relative z-10 border-b border-white/10">
-        <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-center">
-          <a
-            href="#home"
-            className="flex items-center no-underline shrink-0"
-          >
-            <img
-              src="/reana-logo.png"
-              alt="Reana — Data driven decisions at speed"
-              width={280}
-              height={92}
-              className="object-contain w-auto h-20 sm:h-24"
-            />
-          </a>
-        </nav>
-      </header>
+      <AppHeader homeHref="#home" />
 
       {/* Right-edge nav bar — appears when user moves toward the right */}
       <RightEdgeNavBar />
@@ -360,7 +935,7 @@ export default function App() {
           </p>
 
           <a
-            href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
+            href="https://40y6vu.share-na2.hsforms.com/2bjU9sdWrTwqJVsMHQmls4w"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
@@ -601,7 +1176,7 @@ export default function App() {
 
             <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
               <a
-                href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
+                href="https://40y6vu.share-na2.hsforms.com/2n7Jll8amQZKIGul5C3xMOA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
@@ -614,16 +1189,14 @@ export default function App() {
                 <ArrowRight className="w-5 h-5" />
               </a>
               <a
-                href="#what-you-get"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium no-underline transition-opacity hover:opacity-90 border"
+                href="#investors-pro"
+                className="text-sm font-medium no-underline transition-opacity hover:opacity-90"
                 style={{
-                  color: EARLY_ACCESS_COLORS.text,
-                  borderColor: EARLY_ACCESS_COLORS.borderMuted,
+                  color: "#B24BF3",
                   fontFamily: "var(--font-lato), sans-serif",
                 }}
               >
-                See what you&apos;ll get
-                <ArrowRight className="w-4 h-4" />
+                See what you&apos;ll get ↓
               </a>
             </div>
           </div>
@@ -633,6 +1206,7 @@ export default function App() {
       {/* Investors — Section 2: Feel like a pro */}
       <section
         ref={investorsProRef}
+        id="investors-pro"
         className={`relative z-10 px-6 py-24 scroll-reveal ${investorsProVisible ? "is-visible" : ""}`}
       >
         <div className="max-w-5xl mx-auto">
@@ -696,6 +1270,7 @@ export default function App() {
       {/* Investors — Section 3: What Reana helps you do + From "I think..." to "I know." */}
       <section
         ref={investorsHelpRef}
+        id="investors-how"
         className={`relative z-10 px-6 py-24 scroll-reveal ${investorsHelpVisible ? "is-visible" : ""}`}
       >
         <div className="max-w-5xl mx-auto">
@@ -989,7 +1564,7 @@ export default function App() {
               math is handled—so you can feel confident making the call.
             </p>
             <a
-              href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
+              href="https://40y6vu.share-na2.hsforms.com/2n7Jll8amQZKIGul5C3xMOA"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
@@ -1485,76 +2060,7 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer
-        ref={footerRef}
-        className={`relative z-10 border-t px-6 py-12 scroll-reveal ${footerVisible ? "is-visible" : ""}`}
-        style={{ borderColor: "rgba(79, 124, 255, 0.4)" }}
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-            <div>
-              <a href="#home" className="flex items-center gap-2 no-underline">
-                <img src="/login-page-logo.png" alt="Reana" className="h-10 w-auto object-contain" />
-              </a>
-              <p
-                className="mt-2 text-xs"
-                style={{
-                  color: EARLY_ACCESS_COLORS.textSecondary,
-                  fontFamily: "var(--font-lato), sans-serif",
-                }}
-              >
-                DATA DRIVEN DECISIONS AT SPEED
-              </p>
-            </div>
-            <div>
-              <p
-                className="font-semibold text-sm mb-3"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif", color: EARLY_ACCESS_COLORS.text }}
-              >
-                Quick
-              </p>
-              <ul className="list-none p-0 m-0 space-y-1">
-                {["For Agents", "For Investors"].map((label) => (
-                  <li key={label} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#4F7CFF" }} />
-                    <a href={label === "For Agents" ? "#agents" : "#investors"} className="text-sm no-underline hover:opacity-90" style={{ color: EARLY_ACCESS_COLORS.text, fontFamily: "var(--font-lato), sans-serif" }}>
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p
-                className="font-semibold text-sm mb-3"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif", color: EARLY_ACCESS_COLORS.text }}
-              >
-                Legal
-              </p>
-              <ul className="list-none p-0 m-0 space-y-1">
-                {["Privacy Policy", "Terms of Service"].map((label) => (
-                  <li key={label} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#4F7CFF" }} />
-                    <a href="#" className="text-sm no-underline hover:opacity-90" style={{ color: EARLY_ACCESS_COLORS.text, fontFamily: "var(--font-lato), sans-serif" }}>
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <p
-            className="text-center text-xs pt-6 border-t m-0"
-            style={{
-              color: EARLY_ACCESS_COLORS.textSecondary,
-              fontFamily: "var(--font-lato), sans-serif",
-              borderColor: "rgba(255,255,255,0.1)",
-            }}
-          >
-            © 2026 Reana. Building the future of real estate analysis.
-          </p>
-        </div>
-      </footer>
+      <AppFooter refProp={footerRef} isVisible={footerVisible} homeHref="#home" />
     </div>
   );
 }

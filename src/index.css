@@ -9,8 +9,51 @@
 
 body {
   margin: 0;
+  background: #0A0E27;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.legal-prose {
+  color: rgba(255, 255, 255, 0.88);
+  font-family: var(--font-lato), sans-serif;
+  line-height: 1.8;
+}
+
+.legal-prose h2,
+.legal-prose h3 {
+  color: #ffffff;
+}
+
+.legal-prose h2 {
+  margin: 2.25rem 0 0.9rem;
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  line-height: 1.3;
+}
+
+.legal-prose h3 {
+  margin: 1.4rem 0 0.65rem;
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.legal-prose p {
+  margin: 0 0 1rem;
+}
+
+.legal-prose ul {
+  margin: 0 0 1.15rem;
+  padding-left: 1.35rem;
+}
+
+.legal-prose li {
+  margin-bottom: 0.6rem;
+}
+
+.legal-prose li::marker {
+  color: #7C9EED;
 }
 
 /* Bilt-style scroll reveal: fade + slide up as section enters viewport */
