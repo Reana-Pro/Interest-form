@@ -557,7 +557,7 @@ function AppHeader({ homeHref = "/", showBackLink = false }) {
         {showBackLink && (
           <a
             href="/"
-            className="text-sm sm:text-base font-semibold no-underline transition-opacity hover:opacity-90"
+            className="text-base sm:text-lg font-semibold no-underline transition-opacity hover:opacity-90"
             style={{
               color: EARLY_ACCESS_COLORS.text,
               fontFamily: "var(--font-montserrat), sans-serif",
@@ -590,7 +590,7 @@ function AppFooter({ refProp = null, isVisible = true, homeHref = "/", quickLink
               <img src="/reana-logo-2.png" alt="Reana" className="h-10 w-auto object-contain" />
             </a>
             <p
-              className="mt-2 text-xs"
+              className="mt-2 text-sm"
               style={{
                 color: EARLY_ACCESS_COLORS.textSecondary,
                 fontFamily: "var(--font-lato), sans-serif",
@@ -601,7 +601,7 @@ function AppFooter({ refProp = null, isVisible = true, homeHref = "/", quickLink
           </div>
           <div>
             <p
-              className="font-semibold text-sm mb-3"
+              className="font-semibold text-base mb-3"
               style={{ fontFamily: "var(--font-montserrat), sans-serif", color: EARLY_ACCESS_COLORS.text }}
             >
               Quick
@@ -612,7 +612,7 @@ function AppFooter({ refProp = null, isVisible = true, homeHref = "/", quickLink
                   <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#4F7CFF" }} />
                   <a
                     href={link.href}
-                    className="text-sm no-underline hover:opacity-90"
+                    className="text-base no-underline hover:opacity-90"
                     style={{ color: EARLY_ACCESS_COLORS.text, fontFamily: "var(--font-lato), sans-serif" }}
                   >
                     {link.label}
@@ -623,7 +623,7 @@ function AppFooter({ refProp = null, isVisible = true, homeHref = "/", quickLink
           </div>
           <div>
             <p
-              className="font-semibold text-sm mb-3"
+              className="font-semibold text-base mb-3"
               style={{ fontFamily: "var(--font-montserrat), sans-serif", color: EARLY_ACCESS_COLORS.text }}
             >
               Legal
@@ -637,7 +637,7 @@ function AppFooter({ refProp = null, isVisible = true, homeHref = "/", quickLink
                   <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#4F7CFF" }} />
                   <a
                     href={link.href}
-                    className="text-sm no-underline hover:opacity-90"
+                    className="text-base no-underline hover:opacity-90"
                     style={{ color: EARLY_ACCESS_COLORS.text, fontFamily: "var(--font-lato), sans-serif" }}
                   >
                     {link.label}
@@ -648,7 +648,7 @@ function AppFooter({ refProp = null, isVisible = true, homeHref = "/", quickLink
           </div>
         </div>
         <p
-          className="text-center text-xs pt-6 border-t m-0"
+          className="text-center text-sm pt-6 border-t m-0"
           style={{
             color: EARLY_ACCESS_COLORS.textSecondary,
             fontFamily: "var(--font-lato), sans-serif",
@@ -707,7 +707,7 @@ function LegalPage({ document }) {
         <div className="max-w-5xl mx-auto">
           <div className="max-w-3xl">
             <p
-              className="text-sm uppercase tracking-[0.28em]"
+              className="text-base uppercase tracking-[0.28em]"
               style={{ color: EARLY_ACCESS_COLORS.textSecondary }}
             >
               Legal
@@ -889,7 +889,7 @@ export default function App() {
         <div className="max-w-3xl mx-auto text-center">
           {/* AI-Powered tag */}
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-10 border text-sm uppercase tracking-wider font-medium"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-10 border text-base uppercase tracking-wider font-medium"
             style={{
               background: EARLY_ACCESS_COLORS.tagBg,
               borderColor: EARLY_ACCESS_COLORS.borderMuted,
@@ -950,7 +950,7 @@ export default function App() {
 
           {/* Role selection */}
           <p
-            className="mt-12 mb-4 text-sm"
+            className="mt-12 mb-4 text-base"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
@@ -1143,7 +1143,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center">
             <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border text-xs uppercase tracking-wider font-semibold"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border text-base uppercase tracking-wider font-semibold"
               style={{
                 background: "rgba(109, 109, 237, 0.12)",
                 borderColor: EARLY_ACCESS_COLORS.borderMuted,
@@ -1190,7 +1190,7 @@ export default function App() {
               </a>
               <a
                 href="#investors-pro"
-                className="text-sm font-medium no-underline transition-opacity hover:opacity-90"
+                className="text-base font-medium no-underline transition-opacity hover:opacity-90"
                 style={{
                   color: "#B24BF3",
                   fontFamily: "var(--font-lato), sans-serif",
@@ -1212,7 +1212,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center space-y-3">
             <p
-              className="text-sm sm:text-base"
+              className="text-base sm:text-lg"
               style={{ color: EARLY_ACCESS_COLORS.textSecondary }}
             >
               Feel like a pro—even when the deal is moving fast.
@@ -1243,7 +1243,7 @@ export default function App() {
                 }}
               >
                 <p
-                  className="m-0 text-sm sm:text-base leading-relaxed"
+                  className="m-0 text-base sm:text-lg leading-relaxed"
                   style={{
                     color: EARLY_ACCESS_COLORS.text,
                     fontFamily: "var(--font-lato), sans-serif",
@@ -1320,7 +1320,7 @@ export default function App() {
                   {item.title}
                 </h4>
                 <p
-                  className="m-0 text-sm leading-relaxed"
+                  className="m-0 text-base leading-relaxed"
                   style={{
                     color: EARLY_ACCESS_COLORS.textSecondary,
                     fontFamily: "var(--font-lato), sans-serif",
@@ -1334,7 +1334,7 @@ export default function App() {
 
           {/* From "I think..." to "I know." */}
           <p
-            className="mt-20 text-center text-sm sm:text-base mb-8"
+            className="mt-20 text-center text-base sm:text-lg mb-8"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
@@ -1392,7 +1392,7 @@ export default function App() {
                   {step.title}
                 </div>
                 <p
-                  className="mt-2 mb-0 text-sm"
+                  className="mt-2 mb-0 text-base"
                   style={{
                     color: EARLY_ACCESS_COLORS.textSecondary,
                     fontFamily: "var(--font-lato), sans-serif",
@@ -1404,7 +1404,7 @@ export default function App() {
             ))}
           </div>
           <p
-            className="mt-8 text-center text-sm"
+            className="mt-8 text-center text-base"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
@@ -1449,7 +1449,7 @@ export default function App() {
             ].map((label) => (
               <span
                 key={label}
-                className="flex-1 min-w-0 flex items-center justify-center px-4 py-3 rounded-xl border text-sm font-medium text-center leading-snug"
+                className="flex-1 min-w-0 flex items-center justify-center px-4 py-3 rounded-xl border text-base font-medium text-center leading-snug"
                 style={{
                   background: EARLY_ACCESS_COLORS.bgCard,
                   borderColor: "rgba(255,255,255,0.3)",
@@ -1525,7 +1525,7 @@ export default function App() {
                   <ChevronDown className="w-5 h-5 shrink-0 text-white/80 group-open:rotate-180 transition-transform" />
                 </summary>
                 <p
-                  className="mt-3 mb-0 text-sm leading-relaxed text-left"
+                  className="mt-3 mb-0 text-base leading-relaxed text-left"
                   style={{
                     color: EARLY_ACCESS_COLORS.textSecondary,
                     fontFamily: "var(--font-lato), sans-serif",
@@ -1553,7 +1553,7 @@ export default function App() {
               Want early investor access?
             </h3>
             <p
-              className="mt-4 mb-7 text-sm sm:text-base max-w-xl mx-auto text-center"
+              className="mt-4 mb-7 text-base sm:text-lg max-w-xl mx-auto text-center"
               style={{
                 color: EARLY_ACCESS_COLORS.textSecondary,
                 fontFamily: "var(--font-lato), sans-serif",
@@ -1577,7 +1577,7 @@ export default function App() {
               <ArrowRight className="w-5 h-5" />
             </a>
             <p
-              className="mt-4 text-xs sm:text-sm"
+              className="mt-4 text-base sm:text-lg"
               style={{
                 color: EARLY_ACCESS_COLORS.textSecondary,
                 fontFamily: "var(--font-lato), sans-serif",
@@ -1599,7 +1599,7 @@ export default function App() {
           {/* FOR AGENTS hero */}
           <div className="text-center">
             <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border text-xs uppercase tracking-wider font-semibold"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border text-base uppercase tracking-wider font-semibold"
               style={{
                 background: "rgba(178, 75, 243, 0.12)",
                 borderColor: "rgba(178, 75, 243, 0.5)",
@@ -1648,7 +1648,7 @@ export default function App() {
               </a>
               <a
                 href="#agents-how"
-                className="text-sm font-medium no-underline transition-opacity hover:opacity-90"
+                className="text-base font-medium no-underline transition-opacity hover:opacity-90"
                 style={{
                   color: "#B24BF3",
                   fontFamily: "var(--font-lato), sans-serif",
@@ -1659,7 +1659,7 @@ export default function App() {
             </div>
 
             <p
-              className="mt-4 text-sm"
+              className="mt-4 text-base"
               style={{
                 color: EARLY_ACCESS_COLORS.textSecondary,
                 fontFamily: "var(--font-lato), sans-serif",
@@ -1703,7 +1703,7 @@ export default function App() {
                 }}
               >
                 <p
-                  className="m-0 text-sm sm:text-base leading-relaxed"
+                  className="m-0 text-base sm:text-lg leading-relaxed"
                   style={{
                     color: EARLY_ACCESS_COLORS.text,
                     fontFamily: "var(--font-lato), sans-serif",
@@ -1782,7 +1782,7 @@ export default function App() {
                   {item.title}
                 </h4>
                 <p
-                  className="m-0 text-sm leading-relaxed"
+                  className="m-0 text-base leading-relaxed"
                   style={{
                     color: EARLY_ACCESS_COLORS.textSecondary,
                     fontFamily: "var(--font-lato), sans-serif",
@@ -1796,7 +1796,7 @@ export default function App() {
 
           {/* Confidence that shows in the conversation */}
           <p
-            className="mt-20 text-center text-sm sm:text-base mb-8"
+            className="mt-20 text-center text-base sm:text-lg mb-8"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
@@ -1854,7 +1854,7 @@ export default function App() {
                   {step.title}
                 </div>
                 <p
-                  className="mt-2 mb-0 text-sm"
+                  className="mt-2 mb-0 text-base"
                   style={{
                     color: EARLY_ACCESS_COLORS.textSecondary,
                     fontFamily: "var(--font-lato), sans-serif",
@@ -1866,7 +1866,7 @@ export default function App() {
             ))}
           </div>
           <p
-            className="mt-8 text-center text-sm"
+            className="mt-8 text-center text-base"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
@@ -1908,7 +1908,7 @@ export default function App() {
               >
                 <Check className="w-5 h-5 shrink-0" style={{ color: "#B24BF3" }} />
                 <span
-                  className="text-sm sm:text-base"
+                  className="text-base sm:text-lg"
                   style={{
                     color: EARLY_ACCESS_COLORS.text,
                     fontFamily: "var(--font-lato), sans-serif",
@@ -1920,7 +1920,7 @@ export default function App() {
             ))}
           </div>
           <p
-            className="mt-10 text-center text-sm"
+            className="mt-10 text-center text-base"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
@@ -1994,7 +1994,7 @@ export default function App() {
                   <ChevronDown className="w-5 h-5 shrink-0 text-white/80 group-open:rotate-180 transition-transform" />
                 </summary>
                 <p
-                  className="mt-3 mb-0 text-sm leading-relaxed text-left"
+                  className="mt-3 mb-0 text-base leading-relaxed text-left"
                   style={{
                     color: EARLY_ACCESS_COLORS.textSecondary,
                     fontFamily: "var(--font-lato), sans-serif",
@@ -2025,7 +2025,7 @@ export default function App() {
               Want early agent access?
             </h3>
             <p
-              className="mt-4 mb-7 text-sm sm:text-base max-w-xl mx-auto text-center"
+              className="mt-4 mb-7 text-base sm:text-lg max-w-xl mx-auto text-center"
               style={{
                 color: EARLY_ACCESS_COLORS.textSecondary,
                 fontFamily: "var(--font-lato), sans-serif",
@@ -2047,7 +2047,7 @@ export default function App() {
               <ArrowRight className="w-5 h-5" />
             </a>
             <p
-              className="mt-4 text-xs sm:text-sm"
+              className="mt-4 text-base sm:text-lg"
               style={{
                 color: EARLY_ACCESS_COLORS.textSecondary,
                 fontFamily: "var(--font-lato), sans-serif",
