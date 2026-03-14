@@ -547,7 +547,7 @@ function AppHeader({ homeHref = "/", showBackLink = false }) {
       >
         <a href={homeHref} className="flex items-center no-underline shrink-0">
           <img
-            src="/reana-logo-2.png"
+            src="/reana-logo.png"
             alt="Reana — Data driven decisions at speed"
             width={280}
             height={92}
@@ -587,7 +587,7 @@ function AppFooter({ refProp = null, isVisible = true, homeHref = "/", quickLink
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
             <a href={homeHref} className="flex items-center gap-2 no-underline">
-              <img src="/reana-logo-2.png" alt="Reana" className="h-10 w-auto object-contain" />
+              <img src="/reana-logo.png" alt="Reana" className="h-10 w-auto object-contain" />
             </a>
             <p
               className="mt-2 text-sm"
