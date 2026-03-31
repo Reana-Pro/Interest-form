@@ -7,7 +7,6 @@ import {
   TrendingUp,
   User,
   ArrowRight,
-  ChevronDown,
   Menu,
 } from "lucide-react";
 import { getUtmParamsFromSearch, trackEarlyAccessSubmitted } from "./lib/analytics";
@@ -16,7 +15,11 @@ const UTM_STORAGE_KEY = "ea_landing_utm";
 const SUBMIT_TRACKED_KEY = "ea_submit_tracked";
 
 function useScrollReveal(opts = {}) {
-  const { threshold = 0.12, rootMargin = "0px 0px -80px 0px", initialVisible = false } = opts;
+  const {
+    threshold = 0.12,
+    rootMargin = "0px 0px -80px 0px",
+    initialVisible = true,
+  } = opts;
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(initialVisible);
 
@@ -414,6 +417,9 @@ const LEGAL_PAGES = {
   "/terms-of-service": TERMS_OF_SERVICE,
 };
 
+const INVESTOR_FORM_URL = "https://40y6vu.share-na2.hsforms.com/2n7Jll8amQZKIGul5C3xMOA";
+const AGENT_FORM_URL = "https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q";
+
 function RightEdgeNavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
@@ -547,7 +553,7 @@ function AppHeader({ homeHref = "/", showBackLink = false }) {
       >
         <a href={homeHref} className="flex items-center no-underline shrink-0">
           <img
-            src="/reana-logo.png"
+            src="/reana-logo-with-tag.png"
             alt="Reana — Data driven decisions at speed"
             width={280}
             height={92}
@@ -587,7 +593,7 @@ function AppFooter({ refProp = null, isVisible = true, homeHref = "/", quickLink
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
             <a href={homeHref} className="flex items-center gap-2 no-underline">
-              <img src="/reana-logo.png" alt="Reana" className="h-10 w-auto object-contain" />
+              <img src="/reana-logo-with-tag.png" alt="Reana" className="h-10 w-auto object-contain" />
             </a>
             <p
               className="mt-2 text-sm"
@@ -752,9 +758,9 @@ function LegalPage({ document }) {
   );
 }
 
-export default function App() {
+export default function App({ initialPathname = null }) {
   const [role, setRole] = useState("investor");
-  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+  const pathname = initialPathname ?? (typeof window !== "undefined" ? window.location.pathname : "/");
   const isThanksPage = pathname === "/thanks";
   const legalDocument = LEGAL_PAGES[pathname];
   const isLegalPage = Boolean(legalDocument);
@@ -772,6 +778,90 @@ export default function App() {
   const [agentsBuiltRef, agentsBuiltVisible] = useScrollReveal();
   const [faqRef, faqVisible] = useScrollReveal();
   const [footerRef, footerVisible] = useScrollReveal();
+
+  const overviewCards = [
+    {
+      icon: Zap,
+      title: "Real estate analysis is more than finding a property.",
+      body:
+        "The real work is deciding whether a property fits the investor's goals, strategy, and risk profile. A property may look strong on paper and still be wrong for a particular buyer. Reana is designed to help move beyond generic deal analysis by checking each opportunity against the investor's specific investment strategy.",
+      accent: "#4F7CFF",
+    },
+    {
+      icon: Shield,
+      title: "The real burden is not one property. It is the stack of properties.",
+      body:
+        "Serious investors rarely review just one property. They often look at several before deciding where to spend more time, what to pursue, and what to walk away from. Each property is a chain of decisions involving price, rent potential, neighborhood quality, financing, operating costs, rehab, resale potential, risk, and overall fit with the investor's strategy.",
+      accent: "#B24BF3",
+    },
+    {
+      icon: CheckCircle2,
+      title: "That analysis time comes from somewhere.",
+      body:
+        "Without a better workflow, deal analysis can spill into evenings, weekends, and the limited time investors and agents have after everything else gets done. The more properties reviewed, the more mental load, comparison work, and second-guessing pile up. Reana is being built to help reduce that burden.",
+      accent: "#4F7CFF",
+    },
+  ];
+
+  const investorSupportCards = [
+    {
+      title: "Compare more opportunities without sacrificing depth",
+      desc:
+        "Whether you buy to hold, flip, or use the BRRRR method, Reana is designed to help you evaluate more properties without sacrificing depth.",
+    },
+    {
+      title: "Keep the work organized",
+      desc:
+        "Instead of bouncing between websites, spreadsheets, notes, and assumptions, Reana is being built to help organize the work so you can make decisions faster and with greater confidence.",
+    },
+    {
+      title: "Process information faster",
+      desc:
+        "The goal is not just faster analysis. It is more relevant analysis that reflects the investor's actual strategy.",
+    },
+    {
+      title: "Stay focused on fit",
+      desc:
+        "A good investment is not enough. It has to fit the investor, the strategy, and the tolerance for risk and effort.",
+    },
+  ];
+
+  const investorAudience = [
+    "Buy & hold investors",
+    "Fix-and-flip investors",
+    "BRRRR investors",
+    "Small portfolio builders",
+    "Agents supporting investor buyers",
+  ];
+
+  const agentSupportCards = [
+    {
+      title: "Support the work agents already do",
+      desc:
+        "Agents already do a tremendous amount of work to help buyers evaluate properties and make sound decisions. Reana is designed to support that work, not replace it.",
+    },
+    {
+      title: "Bring more clarity to the client conversation",
+      desc:
+        "By organizing and accelerating the analysis process, Reana helps agents bring more clarity, speed, and confidence to buyers and sellers.",
+    },
+    {
+      title: "Keep comparisons consistent",
+      desc:
+        "When multiple properties are in play, a consistent evaluation workflow makes it easier to compare options and explain tradeoffs clearly.",
+    },
+    {
+      title: "Reduce the drag between review and action",
+      desc:
+        "Hours can disappear before a client feels ready to act. Reana is designed to compress that analysis burden into a clearer next step.",
+    },
+  ];
+
+  const agentAudience = [
+    "Buyer's agents working with investors",
+    "Agents advising flip and BRRRR buyers",
+    "Professionals organizing repeated deal reviews",
+  ];
 
   useEffect(() => {
     if (typeof window === "undefined" || pathname !== "/") return;
@@ -886,10 +976,9 @@ export default function App() {
         ref={heroRef}
         className={`relative z-10 pt-20 pb-24 px-6 scroll-reveal ${heroVisible ? "is-visible" : ""}`}
       >
-        <div className="max-w-3xl mx-auto text-center">
-          {/* AI-Powered tag */}
+        <div className="max-w-4xl mx-auto text-center">
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-10 border text-base uppercase tracking-wider font-medium"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-10 border text-sm uppercase tracking-[0.2em] font-medium"
             style={{
               background: EARLY_ACCESS_COLORS.tagBg,
               borderColor: EARLY_ACCESS_COLORS.borderMuted,
@@ -898,20 +987,20 @@ export default function App() {
           >
             <Zap className="w-4 h-4 shrink-0" style={{ color: EARLY_ACCESS_COLORS.border }} />
             <span style={{ fontFamily: "var(--font-lato), sans-serif" }}>
-              AI-Powered Real Estate Analysis
+              1-4 unit investment property analysis
             </span>
           </div>
 
           <h1
-            className="text-4xl sm:text-5xl font-bold leading-tight mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6"
             style={{
               fontFamily: "var(--font-montserrat), sans-serif",
               color: EARLY_ACCESS_COLORS.text,
             }}
           >
-            Analyze 1-4 Unit Real Estate Deals{" "}
+            A property is not just good or bad.{" "}
             <span
-              className="block sm:inline"
+              className="block mt-2"
               style={{
                 background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
                 WebkitBackgroundClip: "text",
@@ -919,23 +1008,35 @@ export default function App() {
                 backgroundClip: "text",
               }}
             >
-              in Minutes, Not Days
+              It is good or bad for a particular investor.
             </span>
           </h1>
 
           <p
-            className="text-lg sm:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl mb-6 max-w-3xl mx-auto leading-relaxed"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
             }}
           >
-            Reana helps investors and agents quickly compare properties, understand risk, and make
-            confident decisions — without spreadsheets or jumping between tools.
+            Reana is designed to help real estate investors and agents evaluate multiple properties
+            faster, process hundreds of decision factors more efficiently, and check each
+            opportunity against the investor&apos;s specific strategy.
+          </p>
+
+          <p
+            className="text-base sm:text-lg mb-10 max-w-2xl mx-auto"
+            style={{
+              color: EARLY_ACCESS_COLORS.textMuted,
+              fontFamily: "var(--font-lato), sans-serif",
+            }}
+          >
+            Join the interest list to follow the launch of a faster, deeper way to analyze 1-4 unit
+            investment properties.
           </p>
 
           <a
-            href="https://40y6vu.share-na2.hsforms.com/2bjU9sdWrTwqJVsMHQmls4w"
+            href={role === "agent" ? AGENT_FORM_URL : INVESTOR_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
@@ -944,11 +1045,10 @@ export default function App() {
               fontFamily: "var(--font-montserrat), sans-serif",
             }}
           >
-            Join the Early Access List
+            Join the Interest List
             <ArrowRight className="w-5 h-5" />
           </a>
 
-          {/* Role selection */}
           <p
             className="mt-12 mb-4 text-base"
             style={{
@@ -956,14 +1056,13 @@ export default function App() {
               fontFamily: "var(--font-lato), sans-serif",
             }}
           >
-            Select Your Role:
+            Select your role:
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button
               type="button"
               onClick={() => {
                 setRole("investor");
-                // Jump to the investor section on the same page
                 requestAnimationFrame(() => scrollToSection("investors"));
               }}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border font-medium transition-all"
@@ -998,12 +1097,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* Why Reana */}
       <section
         ref={whyRef}
         className={`relative z-10 py-20 px-6 scroll-reveal ${whyVisible ? "is-visible" : ""}`}
       >
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2
             className="text-3xl sm:text-4xl font-bold text-center mb-14"
             style={{
@@ -1011,263 +1109,176 @@ export default function App() {
               color: EARLY_ACCESS_COLORS.text,
             }}
           >
-            Why Reana?
+            The work is not just finding a property. It is understanding the fit.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Speed */}
-            <div
-              className="rounded-2xl border p-8 transition-shadow hover:shadow-lg flex flex-col items-center text-center"
-              style={{
-                background: EARLY_ACCESS_COLORS.bgCard,
-                borderColor: "#4F7CFF",
-                boxShadow: "0 0 0 1px rgba(79, 124, 255, 0.4), 0 0 24px rgba(79, 124, 255, 0.15)",
-              }}
-            >
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center mb-5 border shrink-0"
-                style={{
-                  borderColor: "#4F7CFF",
-                  color: "#4F7CFF",
-                  boxShadow: "0 0 16px rgba(79, 124, 255, 0.4)",
-                }}
-              >
-                <Zap className="w-6 h-6" />
-              </div>
-              <h3
-                className="text-xl font-bold mb-3"
-                style={{
-                  fontFamily: "var(--font-montserrat), sans-serif",
-                  color: EARLY_ACCESS_COLORS.text,
-                }}
-              >
-                Speed
-              </h3>
-              <p
-                className="text-base leading-relaxed m-0"
-                style={{
-                  color: EARLY_ACCESS_COLORS.textSecondary,
-                  fontFamily: "var(--font-lato), sans-serif",
-                }}
-              >
-                Analyze and compare multiple properties in one place
-              </p>
-            </div>
+            {overviewCards.map((card) => {
+              const Icon = card.icon;
 
-            {/* Clarity */}
-            <div
-              className="rounded-2xl border p-8 transition-shadow hover:shadow-lg flex flex-col items-center text-center"
-              style={{
-                background: EARLY_ACCESS_COLORS.bgCard,
-                borderColor: "#B24BF3",
-                boxShadow: "0 0 0 1px rgba(178, 75, 243, 0.4), 0 0 24px rgba(178, 75, 243, 0.15)",
-              }}
-            >
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center mb-5 border shrink-0"
-                style={{
-                  borderColor: "#B24BF3",
-                  color: "#B24BF3",
-                  boxShadow: "0 0 16px rgba(178, 75, 243, 0.4)",
-                }}
-              >
-                <Shield className="w-6 h-6" />
-              </div>
-              <h3
-                className="text-xl font-bold mb-3"
-                style={{
-                  fontFamily: "var(--font-montserrat), sans-serif",
-                  color: EARLY_ACCESS_COLORS.text,
-                }}
-              >
-                Clarity
-              </h3>
-              <p
-                className="text-base leading-relaxed m-0"
-                style={{
-                  color: EARLY_ACCESS_COLORS.textSecondary,
-                  fontFamily: "var(--font-lato), sans-serif",
-                }}
-              >
-                Consistent assumptions and explainable AI insights
-              </p>
-            </div>
-
-            {/* Total Confidence */}
-            <div
-              className="rounded-2xl border p-8 transition-shadow hover:shadow-lg flex flex-col items-center text-center"
-              style={{
-                background: EARLY_ACCESS_COLORS.bgCard,
-                borderColor: "#4F7CFF",
-                boxShadow: "0 0 0 1px rgba(79, 124, 255, 0.4), 0 0 24px rgba(79, 124, 255, 0.15)",
-              }}
-            >
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center mb-5 border shrink-0"
-                style={{
-                  borderColor: "#4F7CFF",
-                  color: "#4F7CFF",
-                  boxShadow: "0 0 16px rgba(79, 124, 255, 0.4)",
-                }}
-              >
-                <CheckCircle2 className="w-6 h-6" />
-              </div>
-              <h3
-                className="text-xl font-bold mb-3"
-                style={{
-                  fontFamily: "var(--font-montserrat), sans-serif",
-                  color: EARLY_ACCESS_COLORS.text,
-                }}
-              >
-                Total Confidence
-              </h3>
-              <p
-                className="text-base leading-relaxed m-0"
-                style={{
-                  color: EARLY_ACCESS_COLORS.textSecondary,
-                  fontFamily: "var(--font-lato), sans-serif",
-                }}
-              >
-                See risk, returns, and tradeoffs side-by-side
-              </p>
-            </div>
+              return (
+                <div
+                  key={card.title}
+                  className="rounded-2xl border p-8 transition-shadow hover:shadow-lg text-left"
+                  style={{
+                    background: EARLY_ACCESS_COLORS.bgCard,
+                    borderColor: card.accent,
+                    boxShadow: `0 0 0 1px ${card.accent}40, 0 0 24px ${card.accent}22`,
+                  }}
+                >
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center mb-5 border shrink-0"
+                    style={{
+                      borderColor: card.accent,
+                      color: card.accent,
+                      boxShadow: `0 0 16px ${card.accent}55`,
+                    }}
+                  >
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3
+                    className="text-xl font-bold mb-3"
+                    style={{
+                      fontFamily: "var(--font-montserrat), sans-serif",
+                      color: EARLY_ACCESS_COLORS.text,
+                    }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p
+                    className="text-base leading-relaxed m-0"
+                    style={{
+                      color: EARLY_ACCESS_COLORS.textSecondary,
+                      fontFamily: "var(--font-lato), sans-serif",
+                    }}
+                  >
+                    {card.body}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Investors — Section 1: Know if the deal works */}
       <section
         ref={investorsRef}
         id="investors"
         className={`relative z-10 px-6 py-24 scroll-mt-24 scroll-reveal ${investorsVisible ? "is-visible" : ""}`}
       >
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border text-base uppercase tracking-wider font-semibold"
+        <div className="max-w-5xl mx-auto text-center">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border text-base uppercase tracking-wider font-semibold"
+            style={{
+              background: "rgba(109, 109, 237, 0.12)",
+              borderColor: EARLY_ACCESS_COLORS.borderMuted,
+              color: EARLY_ACCESS_COLORS.text,
+            }}
+          >
+            <TrendingUp className="w-4 h-4" style={{ color: EARLY_ACCESS_COLORS.border }} />
+            <span style={{ fontFamily: "var(--font-lato), sans-serif" }}>For Investors</span>
+          </div>
+
+          <h2
+            className="text-3xl sm:text-5xl font-bold leading-tight"
+            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+          >
+            What Reana is built to change
+          </h2>
+
+          <p
+            className="mt-6 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
+            style={{
+              color: EARLY_ACCESS_COLORS.textSecondary,
+              fontFamily: "var(--font-lato), sans-serif",
+            }}
+          >
+            Reana is designed to help users process more information in less time, compare
+            opportunities more efficiently, and determine not just whether a property is a good
+            investment, but whether it is a good investment for that investor.
+          </p>
+
+          <p
+            className="mt-4 text-base sm:text-lg"
+            style={{
+              color: "#7C9EED",
+              fontFamily: "var(--font-lato), sans-serif",
+            }}
+          >
+            The goal is not just faster analysis. It is more relevant analysis.
+          </p>
+
+          <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
+            <a
+              href={INVESTOR_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
               style={{
-                background: "rgba(109, 109, 237, 0.12)",
-                borderColor: EARLY_ACCESS_COLORS.borderMuted,
-                color: EARLY_ACCESS_COLORS.text,
+                background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
+                fontFamily: "var(--font-montserrat), sans-serif",
               }}
             >
-              <TrendingUp className="w-4 h-4" style={{ color: EARLY_ACCESS_COLORS.border }} />
-              <span style={{ fontFamily: "var(--font-lato), sans-serif" }}>
-                For Investors
-              </span>
-            </div>
-
-            <h2
-              className="text-3xl sm:text-5xl font-bold leading-tight"
-              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-            >
-              Know if the deal works—without losing your whole weekend.
-            </h2>
-
-            <p
-              className="mt-6 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
+              Join the Interest List
+              <ArrowRight className="w-5 h-5" />
+            </a>
+            <a
+              href="#investors-pro"
+              className="text-base font-medium no-underline transition-opacity hover:opacity-90"
               style={{
-                color: EARLY_ACCESS_COLORS.textSecondary,
+                color: "#B24BF3",
                 fontFamily: "var(--font-lato), sans-serif",
               }}
             >
-              Reana turns a 1-4 unit analysis into a decision-ready snapshot and side-by-side
-              comparisons— and it does the math for you. Less FUD (fear, uncertainty, doubt). More calm, confident action.
-            </p>
-
-            <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
-              <a
-                href="https://40y6vu.share-na2.hsforms.com/2n7Jll8amQZKIGul5C3xMOA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
-                style={{
-                  background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
-                  fontFamily: "var(--font-montserrat), sans-serif",
-                }}
-              >
-                Join the Investor Interest List
-                <ArrowRight className="w-5 h-5" />
-              </a>
-              <a
-                href="#investors-pro"
-                className="text-base font-medium no-underline transition-opacity hover:opacity-90"
-                style={{
-                  color: "#B24BF3",
-                  fontFamily: "var(--font-lato), sans-serif",
-                }}
-              >
-                See what you&apos;ll get ↓
-              </a>
-            </div>
+              See why fit matters
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Investors — Section 2: Feel like a pro */}
       <section
         ref={investorsProRef}
         id="investors-pro"
         className={`relative z-10 px-6 py-24 scroll-reveal ${investorsProVisible ? "is-visible" : ""}`}
       >
         <div className="max-w-5xl mx-auto">
-          <div className="text-center space-y-3">
+          <div
+            className="rounded-[28px] border px-8 py-10 md:px-12 md:py-12"
+            style={{
+              background: "linear-gradient(180deg, rgba(20, 29, 76, 0.82), rgba(15, 20, 52, 0.92))",
+              borderColor: "rgba(109, 109, 237, 0.42)",
+              boxShadow: "0 20px 60px rgba(4, 9, 30, 0.35)",
+            }}
+          >
             <p
               className="text-base sm:text-lg"
               style={{ color: EARLY_ACCESS_COLORS.textSecondary }}
             >
-              Feel like a pro—even when the deal is moving fast.
+              Not every good deal is your deal.
             </p>
             <p
-              className="text-xl sm:text-2xl font-semibold"
+              className="mt-4 text-xl sm:text-2xl font-semibold"
               style={{
                 color: EARLY_ACCESS_COLORS.text,
                 fontFamily: "var(--font-montserrat), sans-serif",
               }}
             >
-              The biggest deal-killer isn&apos;t math—it&apos;s fear of getting it wrong.
+              A flip investor, a long-term rental investor, and a BRRRR investor can look at the
+              same property and reach very different conclusions.
+            </p>
+            <p
+              className="mt-6 text-base sm:text-lg leading-relaxed"
+              style={{
+                color: EARLY_ACCESS_COLORS.textSecondary,
+                fontFamily: "var(--font-lato), sans-serif",
+              }}
+            >
+              Reana is designed to help make that distinction by checking the property against the
+              investor&apos;s own strategy, not just general market data.
             </p>
           </div>
-
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              "A lot of people freeze at the word 'math' or feel intimidated by spreadsheets.",
-              "Even confident investors lose hours chasing inputs across websites and tabs.",
-              "After all that work, there's still the question: 'Did I miss something?'",
-            ].map((text) => (
-              <div
-                key={text.slice(0, 24)}
-                className="rounded-xl border p-6 text-left"
-                style={{
-                  background: EARLY_ACCESS_COLORS.bgCard,
-                  borderColor: EARLY_ACCESS_COLORS.borderMuted,
-                }}
-              >
-                <p
-                  className="m-0 text-base sm:text-lg leading-relaxed"
-                  style={{
-                    color: EARLY_ACCESS_COLORS.text,
-                    fontFamily: "var(--font-lato), sans-serif",
-                  }}
-                >
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p
-            className="mt-8 text-center text-base sm:text-lg max-w-3xl mx-auto"
-            style={{
-              color: "#7C9EED",
-              fontFamily: "var(--font-lato), sans-serif",
-            }}
-          >
-            Reana replaces that stress with relief: the spreadsheet is built, the math is done, and the story is clear.
-          </p>
         </div>
       </section>
 
-      {/* Investors — Section 3: What Reana helps you do + From "I think..." to "I know." */}
       <section
         ref={investorsHelpRef}
         id="investors-how"
@@ -1281,27 +1292,23 @@ export default function App() {
               color: EARLY_ACCESS_COLORS.text,
             }}
           >
-            What Reana helps you do
+            For Investors
           </h3>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "Compare opportunities quickly",
-                desc: "Put 2-3 properties side-by-side so you choose the best move, not just the next move.",
-              },
-              {
-                title: "See the deal story at a glance",
-                desc: "A clean summary that highlights what matters: income potential, major cost drivers, and risk signals.",
-              },
-              {
-                title: "Make decisions with confidence",
-                desc: "Reana gives you an editable analysis without spreadsheet stress—so you can make offers and negotiate without second-guessing.",
-              },
-              {
-                title: "Keep your assumptions consistent",
-                desc: "Save your preferred defaults so each new deal starts closer to how you actually invest.",
-              },
-            ].map((item) => (
+          <p
+            className="mt-6 text-base sm:text-lg max-w-3xl mx-auto text-center leading-relaxed"
+            style={{
+              color: EARLY_ACCESS_COLORS.textSecondary,
+              fontFamily: "var(--font-lato), sans-serif",
+            }}
+          >
+            Whether you buy to hold, flip, or use the BRRRR method, Reana is designed to help you
+            evaluate more properties without sacrificing depth. Instead of bouncing between
+            websites, spreadsheets, notes, and assumptions, Reana is being built to help organize
+            the work so you can make decisions faster and with greater confidence.
+          </p>
+
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {investorSupportCards.map((item) => (
               <div
                 key={item.title}
                 className="rounded-xl border p-6"
@@ -1331,91 +1338,9 @@ export default function App() {
               </div>
             ))}
           </div>
-
-          {/* From "I think..." to "I know." */}
-          <p
-            className="mt-20 text-center text-base sm:text-lg mb-8"
-            style={{
-              color: EARLY_ACCESS_COLORS.textSecondary,
-              fontFamily: "var(--font-lato), sans-serif",
-            }}
-          >
-            From &quot;I think...&quot; to &quot;I know.&quot;
-          </p>
-          <h3
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
-            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-          >
-            How it works
-          </h3>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                n: "1",
-                title: "Drop in an address",
-                desc: "Start with the property you're considering—Reana organizes the analysis flow for you.",
-              },
-              {
-                n: "2",
-                title: "Review the snapshot",
-                desc: "See the numbers and the story in one place—clear, structured, and comparable.",
-              },
-              {
-                n: "3",
-                title: "Compare and decide",
-                desc: "Line up 2-3 options and choose what's worth pursuing with less FUD and more confidence.",
-              },
-            ].map((step) => (
-              <div
-                key={step.n}
-                className="rounded-2xl border p-7 text-center"
-                style={{
-                  background: EARLY_ACCESS_COLORS.bgCard,
-                  borderColor: EARLY_ACCESS_COLORS.borderMuted,
-                }}
-              >
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center mb-4 font-bold mx-auto"
-                  style={{
-                    background: "rgba(178, 75, 243, 0.15)",
-                    border: "1px solid rgba(178, 75, 243, 0.5)",
-                    fontFamily: "var(--font-montserrat), sans-serif",
-                    color: "#B24BF3",
-                  }}
-                >
-                  {step.n}
-                </div>
-                <div
-                  className="font-bold"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-                >
-                  {step.title}
-                </div>
-                <p
-                  className="mt-2 mb-0 text-base"
-                  style={{
-                    color: EARLY_ACCESS_COLORS.textSecondary,
-                    fontFamily: "var(--font-lato), sans-serif",
-                  }}
-                >
-                  {step.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-          <p
-            className="mt-8 text-center text-base"
-            style={{
-              color: EARLY_ACCESS_COLORS.textSecondary,
-              fontFamily: "var(--font-lato), sans-serif",
-            }}
-          >
-            Built for 1-4 unit investing. Designed for speed, clarity, and confidence.
-          </p>
         </div>
       </section>
 
-      {/* Investors — Section 4: Built for real-world investors */}
       <section
         ref={investorsBuiltRef}
         className={`relative z-10 px-6 py-24 scroll-reveal ${investorsBuiltVisible ? "is-visible" : ""}`}
@@ -1428,28 +1353,23 @@ export default function App() {
               color: EARLY_ACCESS_COLORS.text,
             }}
           >
-            Built for real-world investors
+            A property is not one decision. It is a chain of decisions.
           </h3>
           <p
-            className="mt-4 text-center text-base max-w-2xl mx-auto"
+            className="mt-4 text-center text-base max-w-3xl mx-auto"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
             }}
           >
-            If you analyze 1 property a year or 4 a month, the workflow is the same—Reana just makes it faster and calmer.
+            The real challenge is not seeing one property. It is reviewing enough properties to
+            find the right one.
           </p>
-          <div className="mt-8 flex flex-nowrap justify-center gap-3">
-            {[
-              "Buy & Hold / long-term rental",
-              "BRRRR investors",
-              "Fix-and-flip investors",
-              "Small portfolio owners",
-              "Newer investors who want structure and confidence",
-            ].map((label) => (
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {investorAudience.map((label) => (
               <span
                 key={label}
-                className="flex-1 min-w-0 flex items-center justify-center px-4 py-3 rounded-xl border text-base font-medium text-center leading-snug"
+                className="px-4 py-3 rounded-xl border text-base font-medium text-center leading-snug"
                 style={{
                   background: EARLY_ACCESS_COLORS.bgCard,
                   borderColor: "rgba(255,255,255,0.3)",
@@ -1464,84 +1384,15 @@ export default function App() {
         </div>
       </section>
 
-      {/* Investors — Section 5: Frequently Asked Questions */}
       <section
         ref={investorsFaqRef}
         className={`relative z-10 px-6 py-24 scroll-reveal ${investorsFaqVisible ? "is-visible" : ""}`}
       >
         <div className="max-w-5xl mx-auto">
-          <h3
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
-            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-          >
-            Frequently Asked Questions
-          </h3>
-
-          <div className="mt-10 max-w-3xl mx-auto space-y-3">
-            {[
-              {
-                q: "Is Reana for beginners or experienced investors?",
-                a: "Both. Beginners get structure. Experienced investors get speed.",
-              },
-              {
-                q: "What property types does it support?",
-                a: "Residential 1–4 unit properties.",
-              },
-              {
-                q: "Do I still need a spreadsheet?",
-                a: "Reana builds the spreadsheet for you and does the math automatically. You can edit assumptions if you want—but most people love not starting from a blank spreadsheet.",
-              },
-              {
-                q: "Will it tell me exactly what to offer?",
-                a: "Reana helps you evaluate and compare and can surface a suggested range based on your inputs. You make the decision—Reana reduces the FUD.",
-              },
-              {
-                q: "Can I analyze more than one property at a time?",
-                a: "Yes—comparison is the point. You'll be able to compare multiple opportunities quickly.",
-              },
-              {
-                q: "When can I get access?",
-                a: "Join the list and we'll notify you when investor onboarding opens.",
-              },
-            ].map((item) => (
-              <details
-                key={item.q}
-                className="rounded-xl border px-5 py-4 group"
-                style={{
-                  background: EARLY_ACCESS_COLORS.bgCard,
-                  borderColor: "rgba(109, 109, 237, 0.4)",
-                }}
-              >
-                <summary className="cursor-pointer select-none flex items-center justify-between gap-3 list-none">
-                  <span
-                    className="font-semibold text-left flex-1"
-                    style={{
-                      fontFamily: "var(--font-montserrat), sans-serif",
-                      color: EARLY_ACCESS_COLORS.text,
-                    }}
-                  >
-                    {item.q}
-                  </span>
-                  <ChevronDown className="w-5 h-5 shrink-0 text-white/80 group-open:rotate-180 transition-transform" />
-                </summary>
-                <p
-                  className="mt-3 mb-0 text-base leading-relaxed text-left"
-                  style={{
-                    color: EARLY_ACCESS_COLORS.textSecondary,
-                    fontFamily: "var(--font-lato), sans-serif",
-                  }}
-                >
-                  {item.a}
-                </p>
-              </details>
-            ))}
-          </div>
-
           <div
-            className="mt-20 rounded-2xl border px-8 py-10 text-center"
+            className="rounded-2xl border px-8 py-10 text-center"
             style={{
-              background:
-                "linear-gradient(135deg, rgba(178,75,243,0.22), rgba(79,124,255,0.16))",
+              background: "linear-gradient(135deg, rgba(178,75,243,0.22), rgba(79,124,255,0.16))",
               borderColor: "rgba(255,255,255,0.12)",
               boxShadow: "0 0 40px rgba(178, 75, 243, 0.15)",
             }}
@@ -1550,21 +1401,97 @@ export default function App() {
               className="text-xl sm:text-2xl font-bold"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
-              Want early investor access?
+              Compare more. Miss less. Move faster.
             </h3>
             <p
-              className="mt-4 mb-7 text-base sm:text-lg max-w-xl mx-auto text-center"
+              className="mt-4 mb-7 text-base sm:text-lg max-w-3xl mx-auto text-center"
               style={{
                 color: EARLY_ACCESS_COLORS.textSecondary,
                 fontFamily: "var(--font-lato), sans-serif",
               }}
             >
-              Join the list and we&apos;ll notify you when onboarding opens. The
-              <br />
-              math is handled—so you can feel confident making the call.
+              Reana is being built to help investors and agents review more opportunities, compare
+              them more efficiently, identify problems sooner, and move forward with better-informed
+              decisions. The purpose is not to create more noise. It is to turn a heavy analysis
+              process into a clearer path forward.
+            </p>
+            <h4
+              className="text-lg sm:text-xl font-bold"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif", color: EARLY_ACCESS_COLORS.text }}
+            >
+              Want early access to Reana?
+            </h4>
+            <p
+              className="mt-4 text-base sm:text-lg max-w-2xl mx-auto"
+              style={{
+                color: EARLY_ACCESS_COLORS.textSecondary,
+                fontFamily: "var(--font-lato), sans-serif",
+              }}
+            >
+              Join the interest list to follow the build, receive updates, and be among the first
+              to know when access opens.
             </p>
             <a
-              href="https://40y6vu.share-na2.hsforms.com/2n7Jll8amQZKIGul5C3xMOA"
+              href={INVESTOR_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex mt-8 items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
+              style={{
+                background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
+                fontFamily: "var(--font-montserrat), sans-serif",
+              }}
+            >
+              Join the Interest List
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        ref={agentsRef}
+        id="agents"
+        className={`relative z-10 px-6 py-24 scroll-mt-24 scroll-reveal ${agentsVisible ? "is-visible" : ""}`}
+      >
+        <div className="max-w-5xl mx-auto text-center">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border text-base uppercase tracking-wider font-semibold"
+            style={{
+              background: "rgba(178, 75, 243, 0.12)",
+              borderColor: "rgba(178, 75, 243, 0.5)",
+              color: EARLY_ACCESS_COLORS.text,
+            }}
+          >
+            <User className="w-4 h-4 shrink-0" style={{ color: "#B24BF3" }} />
+            <span style={{ fontFamily: "var(--font-lato), sans-serif" }}>For Agents</span>
+          </div>
+
+          <h2
+            className="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight text-center"
+            style={{
+              fontFamily: "var(--font-montserrat), sans-serif",
+              color: EARLY_ACCESS_COLORS.text,
+            }}
+          >
+            Agents already do a tremendous amount of work to help buyers evaluate properties and
+            make sound decisions.
+          </h2>
+
+          <p
+            className="mt-6 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
+            style={{
+              color: EARLY_ACCESS_COLORS.textSecondary,
+              fontFamily: "var(--font-lato), sans-serif",
+            }}
+          >
+            Reana is designed to support that work, not replace it, by helping organize and
+            accelerate the analysis process so agents can bring more clarity, speed, and confidence
+            to the client conversation.
+          </p>
+
+          <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
+            <a
+              href={AGENT_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
@@ -1573,105 +1500,23 @@ export default function App() {
                 fontFamily: "var(--font-montserrat), sans-serif",
               }}
             >
-              Join the Investor Interest List
+              Join the Interest List
               <ArrowRight className="w-5 h-5" />
             </a>
-            <p
-              className="mt-4 text-base sm:text-lg"
+            <a
+              href="#agents-how"
+              className="text-base font-medium no-underline transition-opacity hover:opacity-90"
               style={{
-                color: EARLY_ACCESS_COLORS.textSecondary,
+                color: "#B24BF3",
                 fontFamily: "var(--font-lato), sans-serif",
               }}
             >
-              No spam. Just launch updates and early access invites.
-            </p>
+              See how it supports the workflow
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Agents (same page; jump target) */}
-      <section
-        ref={agentsRef}
-        id="agents"
-        className={`relative z-10 px-6 py-24 scroll-mt-24 scroll-reveal ${agentsVisible ? "is-visible" : ""}`}
-      >
-        <div className="max-w-5xl mx-auto">
-          {/* FOR AGENTS hero */}
-          <div className="text-center">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border text-base uppercase tracking-wider font-semibold"
-              style={{
-                background: "rgba(178, 75, 243, 0.12)",
-                borderColor: "rgba(178, 75, 243, 0.5)",
-                color: EARLY_ACCESS_COLORS.text,
-              }}
-            >
-              <User className="w-4 h-4 shrink-0" style={{ color: "#B24BF3" }} />
-              <span style={{ fontFamily: "var(--font-lato), sans-serif" }}>
-                For Agents
-              </span>
-            </div>
-
-            <h2
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight whitespace-nowrap text-center"
-              style={{
-                fontFamily: "var(--font-montserrat), sans-serif",
-                color: EARLY_ACCESS_COLORS.text,
-              }}
-            >
-              Bring clarity to buyers and confidence to sellers.
-            </h2>
-
-            <p
-              className="mt-6 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
-              style={{
-                color: EARLY_ACCESS_COLORS.textSecondary,
-                fontFamily: "var(--font-lato), sans-serif",
-              }}
-            >
-              Reana helps agents support investor buyers with clean analysis and side-by-side comparisons—and helps listing agents price a property right from the beginning with a numbers-based view buyers will be using.
-            </p>
-
-            <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
-              <a
-                href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
-                style={{
-                  background: `linear-gradient(90deg, ${EARLY_ACCESS_COLORS.gradientFrom}, ${EARLY_ACCESS_COLORS.gradientMid}, ${EARLY_ACCESS_COLORS.gradientTo})`,
-                  fontFamily: "var(--font-montserrat), sans-serif",
-                }}
-              >
-                Join the Agent Interest List
-                <ArrowRight className="w-5 h-5" />
-              </a>
-              <a
-                href="#agents-how"
-                className="text-base font-medium no-underline transition-opacity hover:opacity-90"
-                style={{
-                  color: "#B24BF3",
-                  fontFamily: "var(--font-lato), sans-serif",
-                }}
-              >
-                See how it helps ↓
-              </a>
-            </div>
-
-            <p
-              className="mt-4 text-base"
-              style={{
-                color: EARLY_ACCESS_COLORS.textSecondary,
-                fontFamily: "var(--font-lato), sans-serif",
-              }}
-            >
-              Be the agent who brings clarity—and earns trust fast.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Agents — Section 2: Your clients don't want more opinions */}
       <section
         ref={agentsClientsRef}
         id="agents-how"
@@ -1679,23 +1524,22 @@ export default function App() {
       >
         <div className="max-w-5xl mx-auto">
           <h3
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-tight whitespace-nowrap text-center"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
             style={{
               fontFamily: "var(--font-montserrat), sans-serif",
               color: EARLY_ACCESS_COLORS.text,
             }}
           >
-            Your clients don&apos;t want more opinions—they want clarity.
+            The analysis burden does not disappear just because an agent is involved.
           </h3>
-
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              "Investor buyers want numbers and comparisons now—and uncertainty slows them down.",
-              "Sellers want to feel sure the listing price is right—before days on market and price drops create doubt.",
-              "You're stuck pulling inputs from multiple places and explaining math that clients find intimidating.",
+              "Serious investors review multiple properties before deciding what deserves more time.",
+              "Each property carries price, rent, neighborhood, financing, operating cost, rehab, resale, and strategy-fit questions.",
+              "The more properties compared, the more time and second-guessing pile up for both agent and client.",
             ].map((text) => (
               <div
-                key={text.slice(0, 30)}
+                key={text.slice(0, 32)}
                 className="rounded-xl border p-6 text-left"
                 style={{
                   background: EARLY_ACCESS_COLORS.bgCard,
@@ -1714,22 +1558,9 @@ export default function App() {
               </div>
             ))}
           </div>
-
-          <div className="mt-8 flex justify-center">
-            <p
-              className="text-center text-base max-w-3xl leading-relaxed"
-              style={{
-                color: "#E8A8B8",
-                fontFamily: "var(--font-lato), sans-serif",
-              }}
-            >
-              Reana reduces FUD by giving you a clear, shareable analysis—without making you &quot;teach spreadsheets.&quot;
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* Agents — Section 3: What Reana helps agents do + Confidence that shows in the conversation */}
       <section
         ref={agentsHelpRef}
         className={`relative z-10 px-6 py-24 scroll-reveal ${agentsHelpVisible ? "is-visible" : ""}`}
@@ -1746,24 +1577,7 @@ export default function App() {
           </h3>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "Deliver investor-ready clarity",
-                desc: "Give clients clean comparisons so they trust your guidance and act faster.",
-              },
-              {
-                title: "Strengthen listings with confident pricing",
-                desc: "Present a numbers-based story that helps sellers price correctly from day one—with less second-guessing later.",
-              },
-              {
-                title: "Standardize your workflow",
-                desc: "Same structure every time. Less scrambling. More control and professionalism.",
-              },
-              {
-                title: "Reduce the back-and-forth",
-                desc: "Instead of 20 texts and 8 links, share one clear snapshot and comparison clients can understand.",
-              },
-            ].map((item) => (
+            {agentSupportCards.map((item) => (
               <div
                 key={item.title}
                 className="rounded-xl border p-6 text-left"
@@ -1793,91 +1607,9 @@ export default function App() {
               </div>
             ))}
           </div>
-
-          {/* Confidence that shows in the conversation */}
-          <p
-            className="mt-20 text-center text-base sm:text-lg mb-8"
-            style={{
-              color: EARLY_ACCESS_COLORS.textSecondary,
-              fontFamily: "var(--font-lato), sans-serif",
-            }}
-          >
-            Confidence that shows in the conversation.
-          </p>
-          <h3
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center"
-            style={{ fontFamily: "var(--font-montserrat), sans-serif", color: EARLY_ACCESS_COLORS.text }}
-          >
-            How it works for agents
-          </h3>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                n: "1",
-                title: "Enter a property (or a set of properties)",
-                desc: "Start with a listing, a buyer target, or multiple options for comparison.",
-              },
-              {
-                n: "2",
-                title: "Review the decision-ready snapshot",
-                desc: "Get a clean, structured analysis you can explain in plain English.",
-              },
-              {
-                n: "3",
-                title: <>Share and guide<br />the decision</>,
-                desc: "Move buyers forward or help sellers feel confident about pricing.",
-              },
-            ].map((step) => (
-              <div
-                key={step.n}
-                className="rounded-2xl border p-7 text-center"
-                style={{
-                  background: EARLY_ACCESS_COLORS.bgCard,
-                  borderColor: EARLY_ACCESS_COLORS.borderMuted,
-                }}
-              >
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center mb-4 font-bold mx-auto"
-                  style={{
-                    background: "rgba(178, 75, 243, 0.15)",
-                    border: "1px solid rgba(178, 75, 243, 0.5)",
-                    fontFamily: "var(--font-montserrat), sans-serif",
-                    color: "#B24BF3",
-                  }}
-                >
-                  {step.n}
-                </div>
-                <div
-                  className="font-bold"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-                >
-                  {step.title}
-                </div>
-                <p
-                  className="mt-2 mb-0 text-base"
-                  style={{
-                    color: EARLY_ACCESS_COLORS.textSecondary,
-                    fontFamily: "var(--font-lato), sans-serif",
-                  }}
-                >
-                  {step.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-          <p
-            className="mt-8 text-center text-base"
-            style={{
-              color: EARLY_ACCESS_COLORS.textSecondary,
-              fontFamily: "var(--font-lato), sans-serif",
-            }}
-          >
-            Built for buyer&apos;s agents and listing agents working with 1-4 unit investors.
-          </p>
         </div>
       </section>
 
-      {/* Agents — Section 4: Built for agents who want to stand out with clarity */}
       <section
         ref={agentsBuiltRef}
         className={`relative z-10 px-6 py-24 scroll-reveal ${agentsBuiltVisible ? "is-visible" : ""}`}
@@ -1890,16 +1622,12 @@ export default function App() {
               color: EARLY_ACCESS_COLORS.text,
             }}
           >
-            Built for agents who want to stand out with clarity
+            A good investment is not enough. It has to fit the investor.
           </h3>
           <div className="mt-10 space-y-4 max-w-3xl mx-auto">
-            {[
-              "Buyer's agents advising rental, BRRRR, and investment-focused clients",
-              "Listing agents who want to price correctly from the start using a numbers-based narrative",
-              "Agents who want a repeatable, professional workflow that's easy to explain",
-            ].map((item) => (
+            {agentAudience.map((item) => (
               <div
-                key={item.slice(0, 24)}
+                key={item}
                 className="rounded-lg border px-5 py-4 flex items-center gap-4"
                 style={{
                   background: EARLY_ACCESS_COLORS.bgCard,
@@ -1920,100 +1648,27 @@ export default function App() {
             ))}
           </div>
           <p
-            className="mt-10 text-center text-base"
+            className="mt-10 text-center text-base max-w-3xl mx-auto"
             style={{
               color: EARLY_ACCESS_COLORS.textSecondary,
               fontFamily: "var(--font-lato), sans-serif",
             }}
           >
-            Show up as the calm expert in a big decision.
+            Reana is designed to help agents and investors determine not just whether a property
+            looks strong in general, but whether it fits the strategy of the person considering it.
           </p>
         </div>
       </section>
 
-      {/* Agent FAQ + Early Agent Access */}
       <section
         ref={faqRef}
         className={`relative z-10 px-6 py-20 scroll-reveal ${faqVisible ? "is-visible" : ""}`}
       >
-        <div className="max-w-3xl mx-auto">
-          <h2
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-center mb-10"
-            style={{
-              fontFamily: "var(--font-montserrat), sans-serif",
-              color: EARLY_ACCESS_COLORS.text,
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-3">
-            {[
-              {
-                q: "Is Reana only for investors?",
-                a: "No—agents are a core user. It's built to help you support investor clients faster and more clearly.",
-              },
-              {
-                q: "Will this replace a Comparative Market Analysis?",
-                a: "No. A Comparative Market Analysis is still important. Reana adds an investor-style analysis and side-by-side comparisons that help buyers and sellers feel confident about the numbers behind the decision.",
-              },
-              {
-                q: "How does this help me close more deals?",
-                a: "Clarity reduces hesitation. Clients decide sooner, make stronger offers, and stay engaged.",
-              },
-              {
-                q: "Can I use this for multiple clients?",
-                a: "Yes. It's designed for repeat use and a consistent workflow.",
-              },
-              {
-                q: "Is it limited to 1–4 units?",
-                a: "Yes—Reana is focused on residential 1–4 unit properties.",
-              },
-              {
-                q: "When can I get access?",
-                a: "Join the list and we'll notify you when agent onboarding opens.",
-              },
-            ].map((item) => (
-              <details
-                key={item.q}
-                className="rounded-xl border px-5 py-4 group"
-                style={{
-                  background: EARLY_ACCESS_COLORS.bgCard,
-                  borderColor: "rgba(109, 109, 237, 0.4)",
-                }}
-              >
-                <summary className="cursor-pointer select-none flex items-center justify-between gap-3 list-none">
-                  <span
-                    className="font-semibold text-left flex-1"
-                    style={{
-                      fontFamily: "var(--font-montserrat), sans-serif",
-                      color: EARLY_ACCESS_COLORS.text,
-                    }}
-                  >
-                    {item.q}
-                  </span>
-                  <ChevronDown className="w-5 h-5 shrink-0 text-white/80 group-open:rotate-180 transition-transform" />
-                </summary>
-                <p
-                  className="mt-3 mb-0 text-base leading-relaxed text-left"
-                  style={{
-                    color: EARLY_ACCESS_COLORS.textSecondary,
-                    fontFamily: "var(--font-lato), sans-serif",
-                  }}
-                >
-                  {item.a}
-                </p>
-              </details>
-            ))}
-          </div>
-        </div>
-
-        {/* Want early agent access — same width as investor CTA (max-w-5xl) */}
-        <div className="max-w-5xl mx-auto mt-20">
+        <div className="max-w-5xl mx-auto">
           <div
             className="rounded-2xl border px-8 py-10 text-center"
             style={{
-              background:
-                "linear-gradient(135deg, rgba(178,75,243,0.22), rgba(79,124,255,0.16))",
+              background: "linear-gradient(135deg, rgba(178,75,243,0.22), rgba(79,124,255,0.16))",
               borderColor: "rgba(255,255,255,0.12)",
               boxShadow: "0 0 40px rgba(178, 75, 243, 0.15)",
             }}
@@ -2022,19 +1677,20 @@ export default function App() {
               className="text-xl sm:text-2xl font-bold"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
-              Want early agent access?
+              Want early access to Reana?
             </h3>
             <p
-              className="mt-4 mb-7 text-base sm:text-lg max-w-xl mx-auto text-center"
+              className="mt-4 mb-7 text-base sm:text-lg max-w-2xl mx-auto text-center"
               style={{
                 color: EARLY_ACCESS_COLORS.textSecondary,
                 fontFamily: "var(--font-lato), sans-serif",
               }}
             >
-              Join the list for launch updates and early access invites. Reduce client FUD. Increase confident decisions—for buyers and sellers.
+              Join the interest list to follow the build, receive updates, and be among the first
+              to know when access opens.
             </p>
             <a
-              href="https://40y6vu.share-na2.hsforms.com/2bRY17KjtTAG8-fh8bBEJ5Q"
+              href={role === "agent" ? AGENT_FORM_URL : INVESTOR_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-white no-underline transition-opacity hover:opacity-95 shadow-lg"
@@ -2043,7 +1699,7 @@ export default function App() {
                 fontFamily: "var(--font-montserrat), sans-serif",
               }}
             >
-              Join the Agent Interest List
+              Join the Interest List
               <ArrowRight className="w-5 h-5" />
             </a>
             <p
@@ -2053,13 +1709,12 @@ export default function App() {
                 fontFamily: "var(--font-lato), sans-serif",
               }}
             >
-              No spam. Just launch updates and early access invites.
+              Reana is designed to compress the analysis burden.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <AppFooter
         refProp={footerRef}
         isVisible={footerVisible}
